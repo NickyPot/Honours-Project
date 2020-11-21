@@ -54,6 +54,7 @@ public class WaypointController : MonoBehaviour
         FindRoute();
         FindFirstWaypoint(currentRoute);
         Debug.Log(currentRoute);
+
         
     }
 
@@ -62,14 +63,14 @@ public class WaypointController : MonoBehaviour
     {
         float movementStep = movementSpeed * Time.deltaTime;
 
-       
-        
+        transform.LookAt(targetWaypoint);
+        transform.Rotate(-100, 0, 0);
+
 
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementSpeed);
         updateWaypoint();
 
-        int current = (int)(1f / Time.unscaledDeltaTime);
-        Debug.Log(current);
+        
 
 
     }
