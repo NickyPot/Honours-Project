@@ -10,6 +10,18 @@ public class WaypointController : MonoBehaviour
     //initialise road waypoint lists
     public List<Transform> mainRoad1 = new List<Transform>();
     public List<Transform> mainRoad2 = new List<Transform>();
+    public List<Transform> firstSide1 = new List<Transform>();
+    public List<Transform> firstSide2 = new List<Transform>();
+    public List<Transform> secondSide1 = new List<Transform>();
+    public List<Transform> secondSide2 = new List<Transform>();
+    public List<Transform> thirdSide1 = new List<Transform>();
+    public List<Transform> thirdSide2 = new List<Transform>();
+    public List<Transform> fourthSide1 = new List<Transform>();
+    public List<Transform> fourthSide2 = new List<Transform>();
+    public List<Transform> fifthSide1 = new List<Transform>();
+    public List<Transform> fifthSide2 = new List<Transform>();
+    public List<Transform> sixthSide1 = new List<Transform>();
+    public List<Transform> sixthSide2 = new List<Transform>();
 
 
     private List<Transform> currentRoute;
@@ -25,6 +37,19 @@ public class WaypointController : MonoBehaviour
         //add to route list
         routes.Add(mainRoad1);
         routes.Add(mainRoad2);
+        routes.Add(firstSide1);
+        //routes.Add(firstSide2);
+        routes.Add(secondSide1);
+        //routes.Add(secondSide2);
+        routes.Add(thirdSide1);
+        //routes.Add(thirdSide2);
+        routes.Add(fourthSide1);
+        //routes.Add(fourthSide2);
+        routes.Add(fifthSide1);
+        //routes.Add(fifthSide2);
+        routes.Add(sixthSide1);
+        //routes.Add(sixthSide2);
+
 
         FindRoute();
         FindFirstWaypoint(currentRoute);
@@ -38,10 +63,14 @@ public class WaypointController : MonoBehaviour
         float movementStep = movementSpeed * Time.deltaTime;
 
        
-        Debug.Log(routes[0][0]);
+        
 
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementSpeed);
         updateWaypoint();
+
+        int current = (int)(1f / Time.unscaledDeltaTime);
+        Debug.Log(current);
+
 
     }
 
