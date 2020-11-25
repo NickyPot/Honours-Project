@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class WaypointController : MonoBehaviour
 {
@@ -53,7 +54,7 @@ public class WaypointController : MonoBehaviour
 
         FindRoute();
         FindFirstWaypoint(currentRoute);
-        Debug.Log(currentRoute);
+        Debug.Log(currentRoute.ToString());
 
         
     }
@@ -63,14 +64,22 @@ public class WaypointController : MonoBehaviour
     {
         float movementStep = movementSpeed * Time.deltaTime;
 
+
+
         transform.LookAt(targetWaypoint);
         transform.Rotate(-100, 0, 0);
 
-
+        Debug.Log(targetWaypoint);
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementSpeed);
+
+
         updateWaypoint();
 
-        
+       
+
+
+
+
 
 
     }
@@ -136,7 +145,20 @@ public class WaypointController : MonoBehaviour
         if (distance < minDistance)
         {
             int index = currentRoute.IndexOf(targetWaypoint);
-            targetWaypoint = currentRoute[index + 1];
+            if (index + 1 >= currentRoute.Count())
+            {
+                enabled = false;
+                Destroy(this.gameObject);
+                
+
+            }
+            else
+            {
+
+                targetWaypoint = currentRoute[index + 1];
+
+            }
+           
 
         
         }
