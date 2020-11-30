@@ -25,10 +25,10 @@ public class spawner : MonoBehaviour
 
     IEnumerator carWave()
     {
-
+        //spawn infinitely using given spawnrate
         while (true)
         {
-
+            
             yield return new WaitForSeconds(spawnRate);
             spawnCar();
         }
@@ -38,26 +38,28 @@ public class spawner : MonoBehaviour
 
     void spawnCar()
     {
-
+        //if the original prefab has not been destroyed, spawn new car using that
         if (carPrefab != null)
         {
             //spawn car
             car = Instantiate(carPrefab) as GameObject;
 
         }
+        //if it has the instantiate using clone
         else
         {
             car = Instantiate(car);
         
         }
 
-       
+        //put car where the spawner is
         car.transform.position = this.transform.position;
         
 
 
     }
 
+    //for all the given starting points, determine the spawnrate
     void findSpawnRate()
     {
         foreach (Transform waypoint in routeStartingPoints)

@@ -65,17 +65,16 @@ public class WaypointController : MonoBehaviour
         float movementStep = movementSpeed * Time.deltaTime;
 
 
-
+        //change the direction the car is looking at based on direction
         transform.LookAt(targetWaypoint);
         transform.Rotate(-100, 0, 0);
 
-        //Debug.Log(targetWaypoint);
+        //move car towards target
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementSpeed);
 
-
+        //find next waypoint
         updateWaypoint();
 
-        //Debug.Log(targetWaypoint.transform.parent.gameObject.name);
 
 
 
@@ -84,6 +83,7 @@ public class WaypointController : MonoBehaviour
 
     }
 
+    //run in the start function and used to determine which route the car belongs to
     void FindRoute()
     {
         //set variables
@@ -91,7 +91,7 @@ public class WaypointController : MonoBehaviour
         float bestDistance = Mathf.Infinity;
         List<Transform> potentialRoute = null;
 
-        //get your own distance
+        //get your own poisition
         currentPosition = transform.position;
 
 
@@ -102,7 +102,7 @@ public class WaypointController : MonoBehaviour
             //Debug.Log(currentDistance);
 
 
-
+            //if the distance of the current looking waypoint is smaller than the best one so far
             if (currentDistance <= bestDistance)
             {
                 //reset best distance
@@ -120,6 +120,7 @@ public class WaypointController : MonoBehaviour
 
 
         }
+        //set the true current route
         currentRoute = potentialRoute;
 
 
@@ -127,7 +128,7 @@ public class WaypointController : MonoBehaviour
 
    
 
-
+    //get the first waypoint of the given route, used to start the car
     void FindFirstWaypoint(List<Transform> route)
     {
        
@@ -142,9 +143,13 @@ public class WaypointController : MonoBehaviour
         //get distance from next waypoint
         float distance = Vector3.Distance(transform.position, targetWaypoint.position);
 
+        //if we are really close to the target waypoint then..
         if (distance < minDistance)
         {
+            //get the index of it in the list
             int index = currentRoute.IndexOf(targetWaypoint);
+
+            //if we are at the end, then destroy the car
             if (index + 1 >= currentRoute.Count())
             {
                 enabled = false;
@@ -152,6 +157,8 @@ public class WaypointController : MonoBehaviour
                 
 
             }
+
+            //otherwise update to the next waypoint
             else
             {
 
