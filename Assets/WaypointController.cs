@@ -54,7 +54,7 @@ public class WaypointController : MonoBehaviour
 
         FindRoute();
         FindFirstWaypoint(currentRoute);
-        Debug.Log(currentRoute.ToString());
+        //Debug.Log(currentRoute.ToString());
 
         
     }
@@ -69,13 +69,13 @@ public class WaypointController : MonoBehaviour
         transform.LookAt(targetWaypoint);
         transform.Rotate(-100, 0, 0);
 
-        Debug.Log(targetWaypoint);
+        //Debug.Log(targetWaypoint);
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementSpeed);
 
 
         updateWaypoint();
 
-       
+        //Debug.Log(targetWaypoint.transform.parent.gameObject.name);
 
 
 

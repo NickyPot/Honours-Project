@@ -7,16 +7,19 @@ public class spawner : MonoBehaviour
     public List<Transform> routeStartingPoints = new List<Transform>();
     public GameObject carPrefab;
     private GameObject car;
+    private float spawnRate;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
 
+        findSpawnRate();
 
         //find where the spawner is located (closest route first point)
         StartCoroutine(carWave());
+
+        Debug.Log(spawnRate);
         
     }
 
@@ -26,7 +29,7 @@ public class spawner : MonoBehaviour
         while (true)
         {
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(spawnRate);
             spawnCar();
         }
 
@@ -53,5 +56,65 @@ public class spawner : MonoBehaviour
         
 
 
+    }
+
+    void findSpawnRate()
+    {
+        foreach (Transform waypoint in routeStartingPoints)
+        {
+            switch (waypoint.transform.parent.gameObject.name)
+            {
+
+                case "Road1":
+                    spawnRate = 1.0f;
+                    break;
+                case "Road2":
+                    spawnRate = 1.0f;
+                    break;
+                case "FirstSide1":
+                    spawnRate = 4.0f;
+                    break;
+                case "FirstSide2":
+                    spawnRate = 4.0f;
+                    break;
+                case "SecondSide1":
+                    spawnRate = 4.0f;
+                    break;
+                case "SecondSide2":
+                    spawnRate = 4.0f;
+                    break;
+                case "ThirdSide1":
+                    spawnRate = 4.0f;
+                    break;
+                case "ThirdSide2":
+                    spawnRate = 4.0f;
+                    break;
+                case "FourthSide1":
+                    spawnRate = 4.0f;
+                    break;
+                case "FourthSide2":
+                    spawnRate = 4.0f;
+                    break;
+                case "FiftSide1":
+                    spawnRate = 4.0f;
+                    break;
+                case "FifthSide2":
+                    spawnRate = 4.0f;
+                    break;
+                case "SixthSide1":
+                    spawnRate = 4.0f;
+                    break;
+                case "SixthSide2":
+                    spawnRate = 4.0f;
+                    break;
+
+
+
+            }
+
+
+        }
+    
+    
     }
 }
