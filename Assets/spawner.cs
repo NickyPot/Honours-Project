@@ -8,12 +8,14 @@ public class spawner : MonoBehaviour
     public GameObject carPrefab;
     private GameObject car;
     private float spawnRate;
+    private Transform closestWaypoint;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        FindClosestWaypoint();
         findSpawnRate();
 
         //find where the spawner is located (closest route first point)
@@ -30,6 +32,7 @@ public class spawner : MonoBehaviour
         {
             
             yield return new WaitForSeconds(spawnRate);
+            Debug.Log(spawnRate);
             spawnCar();
         }
 
@@ -62,9 +65,9 @@ public class spawner : MonoBehaviour
     //for all the given starting points, determine the spawnrate
     void findSpawnRate()
     {
-        foreach (Transform waypoint in routeStartingPoints)
-        {
-            switch (waypoint.transform.parent.gameObject.name)
+
+        
+            switch (closestWaypoint.transform.parent.gameObject.name)
             {
 
                 case "Road1":
@@ -115,8 +118,31 @@ public class spawner : MonoBehaviour
             }
 
 
-        }
+        
     
     
     }
+
+    void FindClosestWaypoint()
+    {
+        Vector3 currentPosition = transform.position;
+        float bestDistance = Mathf.Infinity;
+
+        foreach (Transform waypoint in routeStartingPoints)
+        {
+            float distance = Vector3.Distance(currentPosition, waypoint.position);
+
+            if (distance <= bestDistance)
+            {
+                bestDistance = distance;
+                closestWaypoint = waypoint;
+            }
+
+
+
+        }
+
+    }
+
+
 }
