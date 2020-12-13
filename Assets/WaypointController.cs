@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Diagnostics;
 
 public class WaypointController : MonoBehaviour
 {
@@ -32,9 +33,17 @@ public class WaypointController : MonoBehaviour
 
     private float movementSpeed = 0f;
 
+    //stores the time the car spent on the road
+    private long timeOnRoad = 0;
+    Stopwatch stopwatch = new Stopwatch();
+
     // Start is called before the first frame update
     void Start()
     {
+        //start stopwatch that will count the time on road
+        
+        stopwatch.Start();
+
         //add to route list
         routes.Add(mainRoad1);
         routes.Add(mainRoad2);
@@ -153,6 +162,11 @@ public class WaypointController : MonoBehaviour
             //if we are at the end, then destroy the car
             if (index + 1 >= currentRoute.Count())
             {
+                //stops the timer and logs the time the car was on the road
+                //TODO: logs on console, switch to csv file
+                stopwatch.Stop();
+                timeOnRoad = stopwatch.ElapsedMilliseconds;
+                print(timeOnRoad / 1000 + " seconds");
                 enabled = false;
                 Destroy(this.gameObject);
                 
@@ -179,7 +193,7 @@ public class WaypointController : MonoBehaviour
         if (movementSpeed <= 0.4f)
         {
             movementSpeed += 0.0001f;
-            Debug.Log(movementSpeed);
+            
         
         }
     
