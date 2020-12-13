@@ -33,6 +33,11 @@ public class WaypointController : MonoBehaviour
 
     private float movementSpeed = 0f;
 
+    //this will log all the speeds that the vehicle has taken
+    //it will be used to calculate the average speed of the vehicle
+    private List<float> loggedSpeeds = new List<float>();
+    private float avgSpeed = 0;
+
     //stores the time the car spent on the road
     private long timeOnRoad = 0;
     Stopwatch stopwatch = new Stopwatch();
@@ -166,7 +171,11 @@ public class WaypointController : MonoBehaviour
                 //TODO: logs on console, switch to csv file
                 stopwatch.Stop();
                 timeOnRoad = stopwatch.ElapsedMilliseconds;
-                print(timeOnRoad / 1000 + " seconds");
+                //print(timeOnRoad / 1000 + " seconds");
+
+                //calculate avg speed of vehicle
+                calcAvgSpeed();
+
                 enabled = false;
                 Destroy(this.gameObject);
                 
@@ -192,11 +201,22 @@ public class WaypointController : MonoBehaviour
 
         if (movementSpeed <= 0.4f)
         {
+            //increase the vehicle speed if it has not reached top speed
             movementSpeed += 0.0001f;
+            //log the speed to the speeds list
+            loggedSpeeds.Add(movementSpeed);
             
         
         }
     
+    
+    }
+
+    void calcAvgSpeed()
+    {
+        avgSpeed = loggedSpeeds.Sum() / loggedSpeeds.Count();
+        print(avgSpeed + " speed");
+
     
     }
 
