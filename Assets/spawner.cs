@@ -21,7 +21,7 @@ public class spawner : MonoBehaviour
         //find where the spawner is located (closest route first point)
         StartCoroutine(carWave());
 
-        Debug.Log(spawnRate);
+        
         
     }
 

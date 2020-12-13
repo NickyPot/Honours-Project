@@ -30,7 +30,7 @@ public class WaypointController : MonoBehaviour
     private float minDistance = 0.1f;
     private int lastWaypointIndex;
 
-    private float movementSpeed = .05f;
+    private float movementSpeed = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +62,7 @@ public class WaypointController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        setSpeed();
         float movementStep = movementSpeed * Time.deltaTime;
 
 
@@ -169,6 +170,19 @@ public class WaypointController : MonoBehaviour
 
         
         }
+    
+    }
+
+    void setSpeed()
+    {
+
+        if (movementSpeed <= 0.4f)
+        {
+            movementSpeed += 0.0001f;
+            Debug.Log(movementSpeed);
+        
+        }
+    
     
     }
 
