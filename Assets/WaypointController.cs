@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 
 public class WaypointController : MonoBehaviour
 {
@@ -176,6 +178,8 @@ public class WaypointController : MonoBehaviour
                 //calculate avg speed of vehicle
                 calcAvgSpeed();
 
+                writeData(currentRoute[0].transform.parent.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString());
+
                 enabled = false;
                 Destroy(this.gameObject);
                 
@@ -217,6 +221,14 @@ public class WaypointController : MonoBehaviour
         avgSpeed = loggedSpeeds.Sum() / loggedSpeeds.Count();
         print(avgSpeed + " speed");
 
+    
+    }
+
+    void writeData(string routeName, string avgSpeed, string timeOnRoad)
+    {
+        TextWriter txtWriter = new StreamWriter("test.txt", true);
+        txtWriter.WriteLine(routeName + ", " + avgSpeed + ", " + timeOnRoad);
+        txtWriter.Close();
     
     }
 
