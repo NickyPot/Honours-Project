@@ -173,7 +173,7 @@ public class WaypointController : MonoBehaviour
                 //TODO: logs on console, switch to csv file
                 stopwatch.Stop();
                 timeOnRoad = stopwatch.ElapsedMilliseconds;
-                //print(timeOnRoad / 1000 + " seconds");
+                
 
                 //calculate avg speed of vehicle
                 calcAvgSpeed();
@@ -219,7 +219,7 @@ public class WaypointController : MonoBehaviour
     void calcAvgSpeed()
     {
         avgSpeed = loggedSpeeds.Sum() / loggedSpeeds.Count();
-        print(avgSpeed + " speed");
+        
 
     
     }
