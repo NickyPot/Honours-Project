@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trafficLightScript : MonoBehaviour
+public class LightControlZones : MonoBehaviour
 {
     Transform trafficLight;
     public Material RedLight;

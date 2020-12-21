@@ -697,7 +697,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!1001 &105718799
 PrefabInstance:
@@ -839,9 +838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
-  controlZone:
-  - {fileID: 1146289140}
+  controlZone: []
 --- !u!4 &116877510
 Transform:
   m_ObjectHideFlags: 0
@@ -923,7 +920,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &137122741 stripped
 Transform:
@@ -1526,7 +1522,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &252690838 stripped
 Transform:
@@ -4542,7 +4537,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &579333763 stripped
 Transform:
@@ -6074,7 +6068,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &748248037 stripped
 Transform:
@@ -6612,7 +6605,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &875511953 stripped
 Transform:
@@ -7112,7 +7104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!1001 &925818296
 PrefabInstance:
@@ -7938,7 +7929,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!1 &1022543888
 GameObject:
@@ -8306,7 +8296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &1060940755 stripped
 Transform:
@@ -8457,7 +8446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &1080115832 stripped
 Transform:
@@ -11238,7 +11226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!1 &1432601267
 GameObject:
@@ -12711,7 +12698,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &1710589145 stripped
 Transform:
@@ -13806,7 +13792,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLights: []
   controlZone: []
 --- !u!4 &1918542001 stripped
 Transform:
