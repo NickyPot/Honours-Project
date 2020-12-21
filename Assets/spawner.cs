@@ -32,7 +32,7 @@ public class spawner : MonoBehaviour
         {
             
             yield return new WaitForSeconds(spawnRate);
-            Debug.Log(spawnRate);
+            //Debug.Log(spawnRate);
             spawnCar();
         }
 

@@ -7,41 +7,43 @@ public class trafficLightScript : MonoBehaviour
     Transform trafficLight;
     public Material RedLight;
     public Material GreenLight;
+    public List<Transform> controlZone;
+
 
     // Start is called before the first frame update
     void Start()
     {
         trafficLight = transform.Find("Light");
         trafficLight.GetComponent<MeshRenderer>().material = GreenLight;
-        StartCoroutine(changeLight());
+        //StartCoroutine(changeLight());
 
     }
 
 
 
-    IEnumerator changeLight()
+    void Update()
     {
-        while (true)
+        if (trafficLight.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
         {
+            //trafficLight.GetComponent<MeshRenderer>().material = GreenLight;
+            controlZone[0].gameObject.SetActive(false);
 
-            if (trafficLight.GetComponent<MeshRenderer>().material.name.Contains( "RedLigh"))
-            {
-                trafficLight.GetComponent<MeshRenderer>().material = GreenLight;
-                print("yes");
-            }
+            //print("yes");
+        }
 
-            else
-            {
-                trafficLight.GetComponent<MeshRenderer>().material = RedLight;
-                print("no");
-
-            }
-
-            yield return new WaitForSeconds(3);
+        else
+        {
+            //trafficLight.GetComponent<MeshRenderer>().material = RedLight;
+            controlZone[0].gameObject.SetActive(true);
+            //print("no");
 
         }
-         
-        
+
+        //yield return new WaitForSeconds(3);
+
+
+
+
 
     }
 }

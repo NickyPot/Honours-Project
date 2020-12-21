@@ -34,6 +34,7 @@ public class WaypointController : MonoBehaviour
     private int lastWaypointIndex;
 
     private float movementSpeed = 0f;
+    private float acceleration = 0.0001f;
 
     //this will log all the speeds that the vehicle has taken
     //it will be used to calculate the average speed of the vehicle
@@ -206,7 +207,7 @@ public class WaypointController : MonoBehaviour
         if (movementSpeed <= 0.4f)
         {
             //increase the vehicle speed if it has not reached top speed
-            movementSpeed += 0.0001f;
+            movementSpeed += acceleration;
             //log the speed to the speeds list
             loggedSpeeds.Add(movementSpeed);
             
@@ -232,5 +233,13 @@ public class WaypointController : MonoBehaviour
     
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        movementSpeed = 0;
+        acceleration = 0;
+    }
+
+
 }
+
+
