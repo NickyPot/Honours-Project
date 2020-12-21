@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 96801395}
   - component: {fileID: 96801396}
   m_Layer: 0
-  m_Name: TrafficLight (2)
+  m_Name: TrafficLight4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 116877510}
   - component: {fileID: 116877509}
   m_Layer: 0
-  m_Name: TrafficLight
+  m_Name: TrafficLight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,7 +838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  controlZone: []
+  controlZone:
+  - {fileID: 1146289140}
 --- !u!4 &116877510
 Transform:
   m_ObjectHideFlags: 0
@@ -884,7 +885,7 @@ GameObject:
   - component: {fileID: 135227252}
   - component: {fileID: 135227253}
   m_Layer: 0
-  m_Name: TrafficLight (3)
+  m_Name: TrafficLight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4453,8 +4454,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 514146225}
+  - component: {fileID: 514146226}
   m_Layer: 0
-  m_Name: Intersection1
+  m_Name: MajorIntersection1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4478,6 +4480,20 @@ Transform:
   m_Father: {fileID: 1321765061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514146226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514146224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
+  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
 --- !u!4 &534205645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8643934212974112539, guid: d5818ad0c79452946badaf4fa184a635,
@@ -7068,7 +7084,7 @@ GameObject:
   - component: {fileID: 924692469}
   - component: {fileID: 924692470}
   m_Layer: 0
-  m_Name: TrafficLight (1)
+  m_Name: TrafficLight3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

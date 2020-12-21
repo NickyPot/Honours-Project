@@ -26,7 +26,7 @@ public class LightControlZones : MonoBehaviour
         if (trafficLight.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
         {
             //trafficLight.GetComponent<MeshRenderer>().material = GreenLight;
-            controlZone[0].gameObject.SetActive(false);
+            controlZone[0].gameObject.SetActive(true);
 
             //print("yes");
         }
@@ -34,7 +34,7 @@ public class LightControlZones : MonoBehaviour
         else
         {
             //trafficLight.GetComponent<MeshRenderer>().material = RedLight;
-            controlZone[0].gameObject.SetActive(true);
+            controlZone[0].gameObject.SetActive(false);
             //print("no");
 
         }
