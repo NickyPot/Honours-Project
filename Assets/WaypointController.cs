@@ -45,6 +45,9 @@ public class WaypointController : MonoBehaviour
     private long timeOnRoad = 0;
     Stopwatch stopwatch = new Stopwatch();
 
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,14 +88,13 @@ public class WaypointController : MonoBehaviour
 
         //change the direction the car is looking at based on direction
         transform.LookAt(targetWaypoint);
-        transform.Rotate(-100, 0, 0);
+        transform.Rotate(-90, 0, 0);
 
         //move car towards target
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementSpeed);
 
         //find next waypoint
         updateWaypoint();
-
 
 
 
@@ -200,9 +202,17 @@ public class WaypointController : MonoBehaviour
         }
     
     }
+    private void OnDrawGizmos()
+    {
+        UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down)*2, Color.green);
+
+    }
 
     void setSpeed()
     {
+        RaycastHit hit;
+        
+        bool carInFront = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2);
 
         if (movementSpeed <= 0.4f)
         {
@@ -211,6 +221,13 @@ public class WaypointController : MonoBehaviour
             //log the speed to the speeds list
             loggedSpeeds.Add(movementSpeed);
             
+        
+        }
+
+        if (carInFront && hit.distance <= 2)
+        {
+
+            movementSpeed = 0;
         
         }
     
@@ -233,11 +250,14 @@ public class WaypointController : MonoBehaviour
     
     }
 
+    //this will stop the car if it comes across an activated control zone by a traffic light
     private void OnTriggerEnter(Collider other)
     {
         movementSpeed = 0;
         acceleration = 0;
     }
+
+    
 
 
 }
