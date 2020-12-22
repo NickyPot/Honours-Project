@@ -21,8 +21,15 @@ public class spawner : MonoBehaviour
         //find where the spawner is located (closest route first point)
         StartCoroutine(carWave());
 
+
         
         
+    }
+
+    private void OnDrawGizmos()
+    {
+        UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
+
     }
 
     IEnumerator carWave()
@@ -30,10 +37,17 @@ public class spawner : MonoBehaviour
         //spawn infinitely using given spawnrate
         while (true)
         {
-            
             yield return new WaitForSeconds(spawnRate);
-            //Debug.Log(spawnRate);
-            spawnCar();
+
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 10) == false)
+            {
+               
+
+                spawnCar();
+
+            }
+
+            
         }
 
     }
@@ -41,6 +55,8 @@ public class spawner : MonoBehaviour
 
     void spawnCar()
     {
+
+
         //if the original prefab has not been destroyed, spawn new car using that
         if (carPrefab != null)
         {
