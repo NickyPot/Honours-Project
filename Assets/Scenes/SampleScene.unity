@@ -8943,7 +8943,7 @@ GameObject:
   - component: {fileID: 1126122795}
   - component: {fileID: 1126122796}
   m_Layer: 0
-  m_Name: Intersection3
+  m_Name: MinorIntersection3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14360,7 +14360,7 @@ GameObject:
   - component: {fileID: 1742888623}
   - component: {fileID: 1742888624}
   m_Layer: 0
-  m_Name: Intersection4
+  m_Name: MajorIntersection4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15098,7 +15098,7 @@ GameObject:
   - component: {fileID: 1939624357}
   - component: {fileID: 1939624358}
   m_Layer: 0
-  m_Name: Intersection2
+  m_Name: MinorIntersection2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
