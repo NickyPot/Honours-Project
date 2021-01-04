@@ -253,11 +253,22 @@ public class WaypointController : MonoBehaviour
     //this will stop the car if it comes across an activated control zone by a traffic light
     private void OnTriggerEnter(Collider other)
     {
-        movementSpeed = 0;
+        
+        movementSpeed = 0f;
         acceleration = 0;
     }
 
-    
+    //start acceleration again at green light
+    //called when the control zone is moved up
+    private void OnTriggerExit(Collider other)
+    {
+        acceleration = 0.0001f;
+        
+    }
+
+
+
+
 
 
 }
