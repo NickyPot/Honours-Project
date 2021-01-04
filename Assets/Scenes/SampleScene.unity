@@ -1523,7 +1523,7 @@ GameObject:
   - component: {fileID: 244943795}
   - component: {fileID: 244943796}
   m_Layer: 0
-  m_Name: TrafficLight
+  m_Name: TrafficLight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244943794}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -4740,7 +4740,7 @@ GameObject:
   - component: {fileID: 556929233}
   - component: {fileID: 556929234}
   m_Layer: 0
-  m_Name: TrafficLight (6)
+  m_Name: TrafficLight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4769,7 +4769,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556929232}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -6272,7 +6272,7 @@ GameObject:
   - component: {fileID: 710080844}
   - component: {fileID: 710080845}
   m_Layer: 0
-  m_Name: TrafficLight (2)
+  m_Name: TrafficLight3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6301,7 +6301,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710080843}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -6810,7 +6810,7 @@ GameObject:
   - component: {fileID: 872980326}
   - component: {fileID: 872980327}
   m_Layer: 0
-  m_Name: TrafficLight (4)
+  m_Name: TrafficLight4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6839,7 +6839,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872980325}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -8322,7 +8322,7 @@ GameObject:
   - component: {fileID: 1017144028}
   - component: {fileID: 1017144029}
   m_Layer: 0
-  m_Name: TrafficLight (4)
+  m_Name: TrafficLight4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8351,7 +8351,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017144027}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -8690,7 +8690,7 @@ GameObject:
   - component: {fileID: 1060294347}
   - component: {fileID: 1060294348}
   m_Layer: 0
-  m_Name: TrafficLight (5)
+  m_Name: TrafficLight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8719,7 +8719,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060294346}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -8841,7 +8841,7 @@ GameObject:
   - component: {fileID: 1079982142}
   - component: {fileID: 1079982143}
   m_Layer: 0
-  m_Name: TrafficLight (6)
+  m_Name: TrafficLight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8870,7 +8870,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079982141}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -9021,8 +9021,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedLight: {fileID: 0}
-  GreenLight: {fileID: 0}
+  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
+  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
 --- !u!1 &1134551328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 182628, guid: b902c7d22d14fa843846ba35e963190b,
@@ -12009,7 +12009,7 @@ GameObject:
   - component: {fileID: 1426288531}
   - component: {fileID: 1426288532}
   m_Layer: 0
-  m_Name: TrafficLight (3)
+  m_Name: TrafficLight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12038,7 +12038,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426288530}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -13701,7 +13701,7 @@ GameObject:
   - component: {fileID: 1684752809}
   - component: {fileID: 1684752810}
   m_Layer: 0
-  m_Name: TrafficLight (5)
+  m_Name: TrafficLight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13730,7 +13730,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684752808}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -14474,8 +14474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedLight: {fileID: 0}
-  GreenLight: {fileID: 0}
+  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
+  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
 --- !u!4 &1748288141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8301888787845796474, guid: e936d1264c8c0344388a116253472bb1,
@@ -15160,7 +15160,7 @@ GameObject:
   - component: {fileID: 1918475200}
   - component: {fileID: 1918475201}
   m_Layer: 0
-  m_Name: TrafficLight (1)
+  m_Name: TrafficLight4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15189,7 +15189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918475199}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b52e01431b033548884847bebd8cf47, type: 3}
   m_Name: 
@@ -15269,8 +15269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedLight: {fileID: 0}
-  GreenLight: {fileID: 0}
+  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
+  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
 --- !u!4 &1963057348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5004291603844284698, guid: 4f755df29b7f3c94ead457a8e60e5147,

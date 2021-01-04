@@ -63,6 +63,29 @@ public class TrafficLightColour : MonoBehaviour
 
 
             }
+
+            if (this.transform.gameObject.name.Contains("Minor"))
+            {
+                //main road green light
+                trafficLight1.GetComponent<MeshRenderer>().material = GreenLight;
+                trafficLight2.GetComponent<MeshRenderer>().material = GreenLight;
+                trafficLight4.GetComponent<MeshRenderer>().material = RedLight;
+                yield return new WaitForSeconds(7);
+
+                //side road 3 green light
+                trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight4.GetComponent<MeshRenderer>().material = RedLight;
+                yield return new WaitForSeconds(7);
+
+                //side road 4 green light
+                trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight4.GetComponent<MeshRenderer>().material = GreenLight;
+                yield return new WaitForSeconds(7);
+
+
+            }
             else 
             {
                 print("no major");
