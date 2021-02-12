@@ -16,7 +16,6 @@ public class LightControlZones : MonoBehaviour
     void Start()
     {
         trafficLight = transform.Find("Light");
-        trafficLight.GetComponent<MeshRenderer>().material = GreenLight;
         //StartCoroutine(changeLight());
 
         originalPos = controlZone[0].transform.position;
