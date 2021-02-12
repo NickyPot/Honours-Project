@@ -114,6 +114,14 @@ public class TrafficLightColour : MonoBehaviour
                 trafficLight4.GetComponent<MeshRenderer>().material = GreenLight;
                 break;
 
+            case 0:
+                //phase change delay, is used to give cars halfway across the intersection time to finish crossing
+                trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight3.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight4.GetComponent<MeshRenderer>().material = RedLight;
+                break;
+
         }
 
 
@@ -143,6 +151,14 @@ public class TrafficLightColour : MonoBehaviour
                 trafficLight4.GetComponent<MeshRenderer>().material = GreenLight;
                 break;
 
+            case 0:
+                //phase change delay, is used to give cars halfway across the intersection time to finish crossing
+                trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
+                trafficLight4.GetComponent<MeshRenderer>().material = RedLight;
+                break;
+
+
         }
 
 
@@ -162,8 +178,10 @@ public class TrafficLightColour : MonoBehaviour
                 //main roads congested
                 if (street1Count > 4 || street2Count > 4)
                 {
-                    nextPhase = 12;
+                    majorPhaseChange(0);
+                    yield return new WaitForSeconds(1);
 
+                    nextPhase = 12;
                     majorPhaseChange(nextPhase);
                     nextPhase = currentPhase;
                     print(nextPhase);
@@ -183,15 +201,21 @@ public class TrafficLightColour : MonoBehaviour
                         //both side roads are congested
                         if (street3Count > 3 && street4Count > 3)
                         {
-                            nextPhase = 4;
 
+                            majorPhaseChange(0);
+                            yield return new WaitForSeconds(1);
+
+
+                            nextPhase = 4;
                             majorPhaseChange(nextPhase);
                             nextPhase = currentPhase;
                             print(nextPhase);
                             yield return new WaitForSeconds(7);
 
-                            nextPhase = 3;
+                            majorPhaseChange(0);
+                            yield return new WaitForSeconds(1);
 
+                            nextPhase = 3;
                             majorPhaseChange(nextPhase);
                             nextPhase = currentPhase;
                             print(nextPhase);
@@ -205,8 +229,12 @@ public class TrafficLightColour : MonoBehaviour
                         //switch to congested side road
                         else if (street3Count > street4Count)
                         {
-                            nextPhase = 3;
 
+                            majorPhaseChange(0);
+                            yield return new WaitForSeconds(1);
+
+
+                            nextPhase = 3;
                             majorPhaseChange(nextPhase);
                             nextPhase = currentPhase;
                             print(nextPhase);
@@ -216,8 +244,12 @@ public class TrafficLightColour : MonoBehaviour
 
                         else
                         {
-                            nextPhase = 4;
 
+                            majorPhaseChange(0);
+                            yield return new WaitForSeconds(1);
+
+
+                            nextPhase = 4;
                             majorPhaseChange(nextPhase);
                             nextPhase = currentPhase;
                             print(nextPhase);
@@ -233,7 +265,6 @@ public class TrafficLightColour : MonoBehaviour
                     else
                     {
                         nextPhase = currentPhase;
-
                         majorPhaseChange(nextPhase);
                         nextPhase = currentPhase;
                         print(nextPhase);
@@ -251,8 +282,11 @@ public class TrafficLightColour : MonoBehaviour
                 //main roads congested
                 if (street1Count > 4 || street2Count > 4)
                 {
-                    nextPhase = 12;
 
+                    minorPhaseChange(0);
+                    yield return new WaitForSeconds(1);
+
+                    nextPhase = 12;
                     minorPhaseChange(nextPhase);
                     nextPhase = currentPhase;
                     print(nextPhase);
@@ -271,8 +305,12 @@ public class TrafficLightColour : MonoBehaviour
                     //side roads congested
                     if (street4Count > 3)
                     {
-                        nextPhase = 4;
 
+                        minorPhaseChange(0);
+                        yield return new WaitForSeconds(1);
+
+
+                        nextPhase = 4;
                         minorPhaseChange(nextPhase);
                         nextPhase = currentPhase;
                         print(nextPhase);
@@ -286,7 +324,6 @@ public class TrafficLightColour : MonoBehaviour
                     else
                     {
                         nextPhase = currentPhase;
-
                         minorPhaseChange(nextPhase);
                         nextPhase = currentPhase;
                         print(nextPhase);
