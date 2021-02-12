@@ -87,46 +87,46 @@ public class spawner : MonoBehaviour
             {
 
                 case "Road1":
-                    spawnRate = 1.0f;
+                    spawnRate = Random.Range(1.0f, 2.0f);
                     break;
                 case "Road2":
-                    spawnRate = 1.0f;
+                    spawnRate = Random.Range(1.0f, 2.0f);
                     break;
                 case "FirstSide1":
-                    spawnRate = 4.0f;
+                    spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "FirstSide2":
-                    spawnRate = 4.0f;
+                    spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "SecondSide1":
-                    spawnRate = 4.0f;
+                   spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "SecondSide2":
-                    spawnRate = 4.0f;
+                    spawnRate = Random.Range(4.0f, 5.0f);;
                     break;
                 case "ThirdSide1":
-                    spawnRate = 4.0f;
+                   spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "ThirdSide2":
-                    spawnRate = 4.0f;
+                    spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "FourthSide1":
-                    spawnRate = 4.0f;
+                    spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "FourthSide2":
-                    spawnRate = 4.0f;
+                    spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "FiftSide1":
-                    spawnRate = 4.0f;
+                    spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "FifthSide2":
-                    spawnRate = 4.0f;
+                    spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "SixthSide1":
-                    spawnRate = 4.0f;
+                   spawnRate = Random.Range(4.0f, 5.0f);
                     break;
                 case "SixthSide2":
-                    spawnRate = 4.0f;
+                   spawnRate = Random.Range(4.0f, 5.0f);
                     break;
 
 
