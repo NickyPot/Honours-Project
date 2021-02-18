@@ -10,20 +10,45 @@ public class spawner : MonoBehaviour
     private float spawnRate;
     private Transform closestWaypoint;
 
+    public GameObject carPrefOriginal;
+
+
+    List<Transform> mainRoad1 = new List<Transform>();
+    List<Transform> mainRoad2 = new List<Transform>();
+    List<Transform> firstSide1 = new List<Transform>();
+    List<Transform> secondSide1 = new List<Transform>();
+    List<Transform> thirdSide1 = new List<Transform>();
+    List<Transform> fourthSide1 = new List<Transform>();
+    List<Transform> fifthSide1 = new List<Transform>();
+    List<Transform> sixthSide1 = new List<Transform>();
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        mainRoad1= carPrefab.GetComponent<WaypointController>().mainRoad1;
+        mainRoad2 = carPrefab.GetComponent<WaypointController>().mainRoad2;
+        firstSide1 = carPrefab.GetComponent<WaypointController>().firstSide1;
+        secondSide1 = carPrefab.GetComponent<WaypointController>().secondSide1;
+        thirdSide1 = carPrefab.GetComponent<WaypointController>().thirdSide1;
+        fourthSide1 = carPrefab.GetComponent<WaypointController>().fourthSide1;
+        fifthSide1 = carPrefab.GetComponent<WaypointController>().fifthSide1;
+        sixthSide1 = carPrefab.GetComponent<WaypointController>().sixthSide1;
+
+
+
+
         FindClosestWaypoint();
         findSpawnRate();
 
         //find where the spawner is located (closest route first point)
         StartCoroutine(carWave());
+        
 
 
-        
-        
+
+
     }
 
     private void OnDrawGizmos()
@@ -57,19 +82,18 @@ public class spawner : MonoBehaviour
     {
 
 
-        //if the original prefab has not been destroyed, spawn new car using that
-        if (carPrefab != null)
-        {
-            //spawn car
-            car = Instantiate(carPrefab) as GameObject;
+        car = Instantiate(carPrefOriginal);
+        car.GetComponent<WaypointController>().mainRoad1 = mainRoad1;
+        car.GetComponent<WaypointController>().mainRoad2 = mainRoad2;
+        car.GetComponent<WaypointController>().firstSide1 = firstSide1;
+        car.GetComponent<WaypointController>().secondSide1 = secondSide1;
+        car.GetComponent<WaypointController>().thirdSide1 = thirdSide1;
+        car.GetComponent<WaypointController>().fourthSide1 = fourthSide1;
+        car.GetComponent<WaypointController>().fifthSide1 = fifthSide1;
+        car.GetComponent<WaypointController>().sixthSide1 = sixthSide1;
 
-        }
-        //if it has the instantiate using clone
-        else
-        {
-            car = Instantiate(car);
-        
-        }
+
+
 
         //put car where the spawner is
         car.transform.position = this.transform.position;
