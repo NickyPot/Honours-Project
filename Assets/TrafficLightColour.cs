@@ -24,15 +24,20 @@ public class TrafficLightColour : MonoBehaviour
     public GameObject detector4;
 
     //stores the count of cars in the vicinity of each traffic light
-    private int street1Count;
-    private int street2Count;
-    private int street3Count;
-    private int street4Count;
+    public int street1Count;
+    public int street2Count;
+    public int street3Count;
+    public int street4Count;
 
     //stores the current and next phase of the traffic lights
     //used to set the traffic phase and check the current one in case it is to remain the same
-    int currentPhase = 12;
+    public int currentPhase = 12;
     int nextPhase = 3;
+
+    public GameObject neighbourIntersection1;
+    public GameObject neighbourIntersection2;
+
+    
 
 
     // Start is called before the first frame update
@@ -74,13 +79,61 @@ public class TrafficLightColour : MonoBehaviour
         street4Count = detector4.GetComponent<Detector>().count;
 
 
+        if (this.gameObject.name == "MajorIntersection1")
+        {
+            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street2Count;
+
+
+        }
+        
+        else if (this.gameObject.name == "MinorIntersection2")
+        {
+            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
+                neighbourIntersection1.GetComponent<TrafficLightColour>().street3Count +
+                neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
+
+            int incomingCount2 = neighbourIntersection2.GetComponent<TrafficLightColour>().street4Count +
+                neighbourIntersection2.GetComponent<TrafficLightColour>().street2Count;
+
+
+
+
+        }
+
+        else if (this.gameObject.name == "MinorIntersection3")
+        {
+            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
+                neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
+                neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
+
+
+            int incomingCount2 = neighbourIntersection2.GetComponent<TrafficLightColour>().street4Count +
+                neighbourIntersection2.GetComponent<TrafficLightColour>().street2Count;
+
+
+
+
+        }
+
+        else if (this.gameObject.name == "MajoIntersection4")
+        {
+            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
+                neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
+                neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
+
+
+
+
+
+
+        }
 
 
 
 
     }
 
-   
+
     private void majorPhaseChange(int phaseNum)
     {
 
@@ -204,7 +257,7 @@ public class TrafficLightColour : MonoBehaviour
 
                             nextPhase = 4;
                             majorPhaseChange(nextPhase);
-                            nextPhase = currentPhase;
+                            currentPhase = nextPhase;
                             yield return new WaitForSeconds(7);
 
                             majorPhaseChange(0);
@@ -212,7 +265,7 @@ public class TrafficLightColour : MonoBehaviour
 
                             nextPhase = 3;
                             majorPhaseChange(nextPhase);
-                            nextPhase = currentPhase;
+                            currentPhase = nextPhase;
                             yield return new WaitForSeconds(7);
 
 
@@ -230,7 +283,7 @@ public class TrafficLightColour : MonoBehaviour
 
                             nextPhase = 3;
                             majorPhaseChange(nextPhase);
-                            nextPhase = currentPhase;
+                            currentPhase = nextPhase;
                             yield return new WaitForSeconds(7);
 
                         }
@@ -244,7 +297,7 @@ public class TrafficLightColour : MonoBehaviour
 
                             nextPhase = 4;
                             majorPhaseChange(nextPhase);
-                            nextPhase = currentPhase;
+                            currentPhase = nextPhase;
                             yield return new WaitForSeconds(7);
 
                         }
@@ -258,7 +311,7 @@ public class TrafficLightColour : MonoBehaviour
                     {
                         nextPhase = currentPhase;
                         majorPhaseChange(nextPhase);
-                        nextPhase = currentPhase;
+                        currentPhase = nextPhase;
                         yield return new WaitForSeconds(7);
 
                     }
@@ -279,7 +332,7 @@ public class TrafficLightColour : MonoBehaviour
 
                     nextPhase = 12;
                     minorPhaseChange(nextPhase);
-                    nextPhase = currentPhase;
+                    currentPhase = nextPhase;
                     yield return new WaitForSeconds(7);
 
 
@@ -302,7 +355,7 @@ public class TrafficLightColour : MonoBehaviour
 
                         nextPhase = 4;
                         minorPhaseChange(nextPhase);
-                        nextPhase = currentPhase;
+                        currentPhase = nextPhase;
                         yield return new WaitForSeconds(7);
 
 
@@ -314,7 +367,7 @@ public class TrafficLightColour : MonoBehaviour
                     {
                         nextPhase = currentPhase;
                         minorPhaseChange(nextPhase);
-                        nextPhase = currentPhase;
+                        currentPhase = nextPhase;
                         yield return new WaitForSeconds(7);
 
                     }
