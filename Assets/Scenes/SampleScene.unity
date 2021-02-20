@@ -4372,6 +4372,13 @@ MonoBehaviour:
   detector2: {fileID: 715509818}
   detector3: {fileID: 894986528}
   detector4: {fileID: 178285466}
+  street1Count: 0
+  street2Count: 0
+  street3Count: 0
+  street4Count: 0
+  currentPhase: 12
+  neighbourIntersection1: {fileID: 1939624356}
+  neighbourIntersection2: {fileID: 0}
 --- !u!4 &534205645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8643934212974112539, guid: d5818ad0c79452946badaf4fa184a635,
@@ -9443,6 +9450,13 @@ MonoBehaviour:
   detector2: {fileID: 937774247}
   detector3: {fileID: 0}
   detector4: {fileID: 388630321}
+  street1Count: 0
+  street2Count: 0
+  street3Count: 0
+  street4Count: 0
+  currentPhase: 12
+  neighbourIntersection1: {fileID: 1939624356}
+  neighbourIntersection2: {fileID: 1742888622}
 --- !u!1 &1134551328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 182628, guid: b902c7d22d14fa843846ba35e963190b,
@@ -15372,6 +15386,13 @@ MonoBehaviour:
   detector2: {fileID: 723786665}
   detector3: {fileID: 1670671714}
   detector4: {fileID: 981255955}
+  street1Count: 0
+  street2Count: 0
+  street3Count: 0
+  street4Count: 0
+  currentPhase: 12
+  neighbourIntersection1: {fileID: 1126122794}
+  neighbourIntersection2: {fileID: 0}
 --- !u!4 &1748288141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8301888787845796474, guid: e936d1264c8c0344388a116253472bb1,
@@ -16176,6 +16197,13 @@ MonoBehaviour:
   detector2: {fileID: 714621894}
   detector3: {fileID: 0}
   detector4: {fileID: 1239979465}
+  street1Count: 0
+  street2Count: 0
+  street3Count: 0
+  street4Count: 0
+  currentPhase: 12
+  neighbourIntersection1: {fileID: 514146224}
+  neighbourIntersection2: {fileID: 1126122794}
 --- !u!4 &1963057348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5004291603844284698, guid: 4f755df29b7f3c94ead457a8e60e5147,
