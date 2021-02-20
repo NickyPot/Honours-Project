@@ -83,6 +83,7 @@ public class TrafficLightColour : MonoBehaviour
         {
             int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street2Count;
 
+            int neighbourPhase = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
 
         }
         
@@ -91,9 +92,11 @@ public class TrafficLightColour : MonoBehaviour
             int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
                 neighbourIntersection1.GetComponent<TrafficLightColour>().street3Count +
                 neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
+            int neighbourPhase1 = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
 
             int incomingCount2 = neighbourIntersection2.GetComponent<TrafficLightColour>().street4Count +
                 neighbourIntersection2.GetComponent<TrafficLightColour>().street2Count;
+            int neighbourPhase2 = neighbourIntersection2.GetComponent<TrafficLightColour>().currentPhase;
 
 
 
@@ -105,10 +108,12 @@ public class TrafficLightColour : MonoBehaviour
             int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
                 neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
                 neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
+            int neighbourPhase1 = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
 
 
             int incomingCount2 = neighbourIntersection2.GetComponent<TrafficLightColour>().street4Count +
                 neighbourIntersection2.GetComponent<TrafficLightColour>().street2Count;
+            int neighbourPhase2 = neighbourIntersection2.GetComponent<TrafficLightColour>().currentPhase;
 
 
 
@@ -120,6 +125,7 @@ public class TrafficLightColour : MonoBehaviour
             int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
                 neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
                 neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
+            int neighbourPhase1 = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
 
 
 
