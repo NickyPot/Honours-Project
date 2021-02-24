@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1614092648",
+        "python_version": "3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)]",
+        "command_line_arguments": "D:\\UNIStuffs\\Year 4\\Reinforcement-Learning\\Honours-Project\\venv\\Scripts\\mlagents-learn --force",
+        "mlagents_version": "0.23.0",
+        "mlagents_envs_version": "0.23.0",
+        "communication_protocol_version": "1.3.0",
+        "pytorch_version": "1.7.0+cu110",
+        "numpy_version": "1.18.5",
+        "end_time_seconds": "1614092660"
+    },
+    "total": 11.9672015,
+    "count": 1,
+    "self": 0.003941400000000428,
+    "children": {
+        "run_training.setup": {
+            "total": 0.005980199999999991,
+            "count": 1,
+            "self": 0.005980199999999991
+        },
+        "TrainerController.start_learning": {
+            "total": 11.9572799,
+            "count": 1,
+            "self": 0.00044809999999806394,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 11.9563834,
+                    "count": 1,
+                    "self": 11.9563834
+                },
+                "trainer_threads": {
+                    "total": 1.0000000010279564e-06,
+                    "count": 1,
+                    "self": 1.0000000010279564e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 0.0004474000000005418,
+                    "count": 1,
+                    "self": 0.0004474000000005418
+                }
+            }
+        }
+    }
+}
