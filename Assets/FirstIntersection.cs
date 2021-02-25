@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
 
 public class FirstIntersection : Agent
 {
@@ -34,6 +35,9 @@ public class FirstIntersection : Agent
     //used in countCongested()
     private int stree3TimeCount = 0;
     private int stree4TimeCount = 0;
+
+    int incommingCount;
+    int neighbourPhase;
 
     //stores the current and next phase of the traffic lights
     //used to set the traffic phase and check the current one in case it is to remain the same
@@ -83,9 +87,9 @@ public class FirstIntersection : Agent
 
         if (this.gameObject.name == "MajorIntersection1")
         {
-            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street2Count;
+            incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street2Count;
 
-            int neighbourPhase = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
+            neighbourPhase = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
 
         }
 
@@ -170,6 +174,7 @@ public class FirstIntersection : Agent
         {
 
 
+
             
         }
 
@@ -181,6 +186,18 @@ public class FirstIntersection : Agent
         foreach (GameObject car in cars)
             GameObject.Destroy(car);
         majorPhaseChange(1);
+    }
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(street1Count);
+        sensor.AddObservation(street2Count);
+        sensor.AddObservation(street3Count);
+        sensor.AddObservation(street4Count);
+        sensor.AddObservation(incommingCount);
+        sensor.AddObservation(neighbourPhase);
+        sensor.AddObservation(stree3TimeCount);
+        sensor.AddObservation(stree4TimeCount);
+
     }
 
 
