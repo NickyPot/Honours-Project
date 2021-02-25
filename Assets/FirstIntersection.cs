@@ -30,6 +30,11 @@ public class FirstIntersection : Agent
     public int street3Count;
     public int street4Count;
 
+    //used to indicate that cars on side roads have been waiting too long
+    //used in countCongested()
+    private int stree3TimeCount = 0;
+    private int stree4TimeCount = 0;
+
     //stores the current and next phase of the traffic lights
     //used to set the traffic phase and check the current one in case it is to remain the same
     public int currentPhase = 12;
@@ -131,8 +136,33 @@ public class FirstIntersection : Agent
 
 
     }
+    
+    
+    IEnumerator countCongested()
+    {
+        if (street3Count > 0 && trafficLight3.GetComponent<MeshRenderer>().material == RedLight)
+        {
+            stree3TimeCount++;
 
-   
+        }
+        else
+        {
+            stree3TimeCount = 0;
+        }
+
+        if (street4Count > 0 && trafficLight4.GetComponent<MeshRenderer>().material == RedLight)
+        {
+            stree4TimeCount++;
+
+        }
+        else
+        {
+            stree4TimeCount = 0;
+        }
+        yield return new WaitForSeconds(1);
+    
+    }
+      
 
     IEnumerator decidePhase()
     {
