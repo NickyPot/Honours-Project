@@ -4331,7 +4331,6 @@ GameObject:
   - component: {fileID: 514146226}
   - component: {fileID: 514146228}
   - component: {fileID: 514146227}
-  - component: {fileID: 514146229}
   m_Layer: 0
   m_Name: MajorIntersection1
   m_TagString: Untagged
@@ -4391,13 +4390,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 514146224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Script: {fileID: 11500000, guid: a705f32983c990c4eaab10702ad21092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 1000
+  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
+  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
+  detector1: {fileID: 1408211833}
+  detector2: {fileID: 715509818}
+  detector3: {fileID: 894986528}
+  detector4: {fileID: 178285466}
+  street1Count: 0
+  street2Count: 0
+  street3Count: 0
+  street4Count: 0
+  currentPhase: 12
+  neighbourIntersection1: {fileID: 1939624356}
+  neighbourIntersection2: {fileID: 0}
 --- !u!114 &514146228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4422,31 +4434,8 @@ MonoBehaviour:
   m_BehaviorName: My Behavior
   TeamId: 0
   m_UseChildSensors: 1
---- !u!114 &514146229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514146224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a705f32983c990c4eaab10702ad21092, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
-  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  detector1: {fileID: 1408211833}
-  detector2: {fileID: 715509818}
-  detector3: {fileID: 894986528}
-  detector4: {fileID: 178285466}
-  street1Count: 0
-  street2Count: 0
-  street3Count: 0
-  street4Count: 0
-  currentPhase: 12
-  neighbourIntersection1: {fileID: 1939624356}
-  neighbourIntersection2: {fileID: 0}
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
 --- !u!4 &534205645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8643934212974112539, guid: d5818ad0c79452946badaf4fa184a635,
