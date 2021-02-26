@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
+
+
 
 public class FirstIntersection : Agent
 {
@@ -200,5 +203,10 @@ public class FirstIntersection : Agent
 
     }
 
+    public override void OnActionReceived(ActionBuffers actions)
+    {
+        nextPhase = actions.DiscreteActions[0];    
+    
+    }
 
 }
