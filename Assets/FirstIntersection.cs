@@ -176,9 +176,10 @@ public class FirstIntersection : Agent
     {
         while (true)
         {
-
-
-
+            //requests decision from rl, goes on to next step which also collects observations
+            RequestDecision();
+            Academy.Instance.EnvironmentStep();
+            yield return new WaitForSeconds(5f);
             
         }
 
