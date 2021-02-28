@@ -53,6 +53,7 @@ public class FirstIntersection : Agent
     // Start is called before the first frame update
     void Start()
     {
+        Academy.Instance.AutomaticSteppingEnabled = false;
 
         trafficLight1 = this.transform.Find("TrafficLight1").Find("Light");
         trafficLight2 = this.transform.Find("TrafficLight2").Find("Light");
