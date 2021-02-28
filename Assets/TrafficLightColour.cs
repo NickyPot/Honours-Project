@@ -29,6 +29,12 @@ public class TrafficLightColour : MonoBehaviour
     private int street3Count;
     private int street4Count;
 
+    //these are used to indicate the maximum amount of cars that have waited at red light in a phase
+    private int maxStreet1Count = 0;
+    private int maxStreet2Count = 0;
+    private int maxStreet3Count = 0;
+    private int maxStreet4Count = 0;
+
     //stores the current and next phase of the traffic lights
     //used to set the traffic phase and check the current one in case it is to remain the same
     int currentPhase = 12;
@@ -73,7 +79,66 @@ public class TrafficLightColour : MonoBehaviour
 
         street4Count = detector4.GetComponent<Detector>().count;
 
+        /*the following if statements check if the number of cars waiting at redlights
+        has increased. This is used to record the max number of cars waiting at the end of a phase
+        */
+        //during phase 12, streets 3 and 4 have red lights
+        if (currentPhase == 12)
+        {
+            if (maxStreet3Count < street3Count)
+            {
+                maxStreet3Count = street3Count;
+            }
 
+            if (maxStreet4Count < street4Count)
+            {
+                maxStreet4Count = street4Count;
+            }
+
+        }
+
+        //during phase 3, streets 1,2 and 4 have red lights
+        else if (currentPhase == 3)
+        {
+            if (maxStreet1Count < street1Count)
+            {
+                maxStreet1Count = street1Count;
+            }
+
+            if (maxStreet2Count < street2Count)
+            {
+                maxStreet2Count = street2Count;
+            }
+
+            if (maxStreet4Count < street4Count)
+            {
+                maxStreet4Count = street4Count;
+            }
+
+        }
+
+        //during phase 4, streets 1,2 and 3 have red lights
+        else if (currentPhase == 4)
+        {
+            if (maxStreet1Count < street1Count)
+            {
+                maxStreet1Count = street1Count;
+            }
+
+            if (maxStreet2Count < street2Count)
+            {
+                maxStreet2Count = street2Count;
+            }
+
+            if (maxStreet3Count < street3Count)
+            {
+                maxStreet3Count = street3Count;
+            }
+
+        }
+
+        //debugging
+        //print("Road 1: " + maxStreet1Count + "Road 2: " + maxStreet2Count + "Road 3: " + maxStreet3Count + "Road 4: " + maxStreet4Count);
 
 
 
