@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Text;
 
 public class TrafficLightColour : MonoBehaviour
 {
@@ -186,7 +188,7 @@ public class TrafficLightColour : MonoBehaviour
 
         }
 
-
+        saveData();
 
 
     }
@@ -223,6 +225,7 @@ public class TrafficLightColour : MonoBehaviour
 
         }
 
+        saveData();
 
 
 
@@ -390,6 +393,22 @@ public class TrafficLightColour : MonoBehaviour
 
             }
         }
+
+    }
+
+    //this is used to save the max num of cars waiting at a red light street
+    //it is called when the phase changes
+    private void saveData()
+    {
+        TextWriter txtWriter = new StreamWriter("traffic_light_data.txt", true);
+        txtWriter.WriteLine(maxStreet1Count + ", " + maxStreet2Count + ", " + maxStreet3Count + ", " + maxStreet4Count);
+        txtWriter.Close();
+
+        //reset max vals
+        maxStreet1Count = 0;
+        maxStreet2Count = 0;
+        maxStreet3Count = 0;
+        maxStreet4Count = 0;
 
     }
 
