@@ -176,6 +176,28 @@ public class FirstIntersection : Agent
     {
         while (true)
         {
+            //find time penalty
+            float tpStreet3 = findTimePenalty(stree3TimeCount);
+            float tpStreet4 = findTimePenalty(stree4TimeCount);
+
+            //set rewards for environment step
+            float reward;
+
+            /*if the cars on any of the side streets have been waiting for longer than a minute
+             then -1f reward and reset episode, otherwise continue with assigned reward*/
+            if (tpStreet3 == -1f || tpStreet4 == -1f)
+            {
+                reward = -1f;
+                SetReward(reward);
+                EndEpisode();
+
+            }
+            else
+            {
+                reward = (float)(1 / (street1Count * 1.5 + street2Count * 1.5 + street3Count * tpStreet3 + street4Count * tpStreet4));
+                SetReward(reward);
+            }
+            
             //requests decision from rl, goes on to next step which also collects observations
             RequestDecision();
             Academy.Instance.EnvironmentStep();
@@ -209,6 +231,46 @@ public class FirstIntersection : Agent
     {
         nextPhase = actions.DiscreteActions[0];    
     
+    }
+
+    //this figures out the time penatly based on the wait time on the side roads
+    private float findTimePenalty(int streetTimeCount)
+    {
+        float timePenalty = 0f;
+        if (streetTimeCount < 15)
+        {
+            timePenalty = 0f;
+        
+        }
+
+        if (streetTimeCount >= 15 && streetTimeCount < 30)
+        {
+            timePenalty = 0.5f;
+
+        }
+
+
+        if (streetTimeCount >= 30 && streetTimeCount < 45)
+        {
+            timePenalty = 1f;
+
+        }
+
+        if (streetTimeCount >= 45 && streetTimeCount < 60)
+        {
+            timePenalty = 1.5f;
+
+        }
+
+        if (streetTimeCount > 60)
+        {
+            timePenalty = -1f;
+
+        }
+
+
+
+        return timePenalty;
     }
 
 }
