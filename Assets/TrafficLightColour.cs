@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.MLAgents;
+using System.IO;
+using System.Text;
 
 public class TrafficLightColour : MonoBehaviour
 {
@@ -25,20 +26,21 @@ public class TrafficLightColour : MonoBehaviour
     public GameObject detector4;
 
     //stores the count of cars in the vicinity of each traffic light
-    public int street1Count;
-    public int street2Count;
-    public int street3Count;
-    public int street4Count;
+    private int street1Count;
+    private int street2Count;
+    private int street3Count;
+    private int street4Count;
+
+    //these are used to indicate the maximum amount of cars that have waited at red light in a phase
+    private int maxStreet1Count = 0;
+    private int maxStreet2Count = 0;
+    private int maxStreet3Count = 0;
+    private int maxStreet4Count = 0;
 
     //stores the current and next phase of the traffic lights
     //used to set the traffic phase and check the current one in case it is to remain the same
-    public int currentPhase = 12;
+    int currentPhase = 12;
     int nextPhase = 3;
-
-    public GameObject neighbourIntersection1;
-    public GameObject neighbourIntersection2;
-
-    
 
 
     // Start is called before the first frame update
@@ -79,68 +81,73 @@ public class TrafficLightColour : MonoBehaviour
 
         street4Count = detector4.GetComponent<Detector>().count;
 
-
-        if (this.gameObject.name == "MajorIntersection1")
+        /*the following if statements check if the number of cars waiting at redlights
+        has increased. This is used to record the max number of cars waiting at the end of a phase
+        */
+        //during phase 12, streets 3 and 4 have red lights
+        if (currentPhase == 12)
         {
-            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street2Count;
+            if (maxStreet3Count < street3Count)
+            {
+                maxStreet3Count = street3Count;
+            }
 
-            int neighbourPhase = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
-
-        }
-        
-        else if (this.gameObject.name == "MinorIntersection2")
-        {
-            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
-                neighbourIntersection1.GetComponent<TrafficLightColour>().street3Count +
-                neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
-            int neighbourPhase1 = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
-
-            int incomingCount2 = neighbourIntersection2.GetComponent<TrafficLightColour>().street4Count +
-                neighbourIntersection2.GetComponent<TrafficLightColour>().street2Count;
-            int neighbourPhase2 = neighbourIntersection2.GetComponent<TrafficLightColour>().currentPhase;
-
-
-
+            if (maxStreet4Count < street4Count)
+            {
+                maxStreet4Count = street4Count;
+            }
 
         }
 
-        else if (this.gameObject.name == "MinorIntersection3")
+        //during phase 3, streets 1,2 and 4 have red lights
+        else if (currentPhase == 3)
         {
-            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
-                neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
-                neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
-            int neighbourPhase1 = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
+            if (maxStreet1Count < street1Count)
+            {
+                maxStreet1Count = street1Count;
+            }
 
+            if (maxStreet2Count < street2Count)
+            {
+                maxStreet2Count = street2Count;
+            }
 
-            int incomingCount2 = neighbourIntersection2.GetComponent<TrafficLightColour>().street4Count +
-                neighbourIntersection2.GetComponent<TrafficLightColour>().street2Count;
-            int neighbourPhase2 = neighbourIntersection2.GetComponent<TrafficLightColour>().currentPhase;
-
-
-
+            if (maxStreet4Count < street4Count)
+            {
+                maxStreet4Count = street4Count;
+            }
 
         }
 
-        else if (this.gameObject.name == "MajoIntersection4")
+        //during phase 4, streets 1,2 and 3 have red lights
+        else if (currentPhase == 4)
         {
-            int incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
-                neighbourIntersection1.GetComponent<TrafficLightColour>().street1Count +
-                neighbourIntersection1.GetComponent<TrafficLightColour>().street4Count;
-            int neighbourPhase1 = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
+            if (maxStreet1Count < street1Count)
+            {
+                maxStreet1Count = street1Count;
+            }
 
+            if (maxStreet2Count < street2Count)
+            {
+                maxStreet2Count = street2Count;
+            }
 
-
-
-
+            if (maxStreet3Count < street3Count)
+            {
+                maxStreet3Count = street3Count;
+            }
 
         }
+
+        //debugging
+        //print("Road 1: " + maxStreet1Count + "Road 2: " + maxStreet2Count + "Road 3: " + maxStreet3Count + "Road 4: " + maxStreet4Count);
 
 
 
 
     }
 
-
+   
     private void majorPhaseChange(int phaseNum)
     {
 
@@ -181,7 +188,7 @@ public class TrafficLightColour : MonoBehaviour
 
         }
 
-
+        saveData();
 
 
     }
@@ -218,6 +225,7 @@ public class TrafficLightColour : MonoBehaviour
 
         }
 
+        saveData();
 
 
 
@@ -240,7 +248,7 @@ public class TrafficLightColour : MonoBehaviour
 
                     nextPhase = 12;
                     majorPhaseChange(nextPhase);
-                    nextPhase = currentPhase;
+                    currentPhase = nextPhase;
                     yield return new WaitForSeconds(7);
 
 
@@ -385,6 +393,22 @@ public class TrafficLightColour : MonoBehaviour
 
             }
         }
+
+    }
+
+    //this is used to save the max num of cars waiting at a red light street
+    //it is called when the phase changes
+    private void saveData()
+    {
+        TextWriter txtWriter = new StreamWriter("traffic_light_data.txt", true);
+        txtWriter.WriteLine(maxStreet1Count + ", " + maxStreet2Count + ", " + maxStreet3Count + ", " + maxStreet4Count);
+        txtWriter.Close();
+
+        //reset max vals
+        maxStreet1Count = 0;
+        maxStreet2Count = 0;
+        maxStreet3Count = 0;
+        maxStreet4Count = 0;
 
     }
 
