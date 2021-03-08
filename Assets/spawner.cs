@@ -22,6 +22,9 @@ public class spawner : MonoBehaviour
     List<Transform> fifthSide1 = new List<Transform>();
     List<Transform> sixthSide1 = new List<Transform>();
 
+    public int poolingAmount = 30;
+    public List<GameObject> carPool;
+
 
 
     // Start is called before the first frame update
@@ -36,18 +39,37 @@ public class spawner : MonoBehaviour
         fifthSide1 = carPrefab.GetComponent<WaypointController>().fifthSide1;
         sixthSide1 = carPrefab.GetComponent<WaypointController>().sixthSide1;
 
+        //set prefab to inactive before instatiating
+        //this is done so that it doesn't mess with the waypointcontroller script
+        carPrefOriginal.SetActive(false);
+
+        //create pool of unused cars
+        carPool = new List<GameObject>();
+        GameObject tmp;
+        for (int i = 0; i < poolingAmount; i++)
+        {
+            tmp = Instantiate(carPrefOriginal);
+            tmp.GetComponent<WaypointController>().mainRoad1 = mainRoad1;
+            tmp.GetComponent<WaypointController>().mainRoad2 = mainRoad2;
+            tmp.GetComponent<WaypointController>().firstSide1 = firstSide1;
+            tmp.GetComponent<WaypointController>().secondSide1 = secondSide1;
+            tmp.GetComponent<WaypointController>().thirdSide1 = thirdSide1;
+            tmp.GetComponent<WaypointController>().fourthSide1 = fourthSide1;
+            tmp.GetComponent<WaypointController>().fifthSide1 = fifthSide1;
+            tmp.GetComponent<WaypointController>().sixthSide1 = sixthSide1;
+            tmp.SetActive(false);
+            carPool.Add(tmp);
+        
+        }
 
 
-
+        //find where the spawner is located (closest route first point)
+        //and based on that it finds the corresponding spawnrate
         FindClosestWaypoint();
         findSpawnRate();
 
-        //find where the spawner is located (closest route first point)
-        StartCoroutine(carWave());
         
-
-
-
+        StartCoroutine(carWave());
 
     }
 
@@ -80,24 +102,26 @@ public class spawner : MonoBehaviour
 
     void spawnCar()
     {
-
-
-        car = Instantiate(carPrefOriginal);
-        car.GetComponent<WaypointController>().mainRoad1 = mainRoad1;
-        car.GetComponent<WaypointController>().mainRoad2 = mainRoad2;
-        car.GetComponent<WaypointController>().firstSide1 = firstSide1;
-        car.GetComponent<WaypointController>().secondSide1 = secondSide1;
-        car.GetComponent<WaypointController>().thirdSide1 = thirdSide1;
-        car.GetComponent<WaypointController>().fourthSide1 = fourthSide1;
-        car.GetComponent<WaypointController>().fifthSide1 = fifthSide1;
-        car.GetComponent<WaypointController>().sixthSide1 = sixthSide1;
-
-
-
-
-        //put car where the spawner is
-        car.transform.position = this.transform.position;
+        //find inactive car to bring to the environment
+        for (int i = 0; i < poolingAmount; i++)
+        {
+            if (!carPool[i].activeInHierarchy)
+            {
+                car = carPool[i];
+            
+            }
         
+        }
+
+        if (car != null)
+        {
+            //put car where the spawner is and activate it
+            car.transform.position = this.transform.position;
+            car.SetActive(true);
+
+
+        }
+
 
 
     }

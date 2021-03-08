@@ -27,22 +27,23 @@ public class WaypointController : MonoBehaviour
     public List<Transform> sixthSide1 = new List<Transform>();
     public List<Transform> sixthSide2 = new List<Transform>();
 
-
+    //init vars for moving through waypoints
     private List<Transform> currentRoute;
     private Transform targetWaypoint;
     private float minDistance = 0.1f;
     private int lastWaypointIndex;
 
-    private float movementSpeed = 0f;
-    private float acceleration = 0.0001f;
+    //init vars for vehicle speed
+    private float movementSpeed;
+    private float acceleration;
 
     //this will log all the speeds that the vehicle has taken
     //it will be used to calculate the average speed of the vehicle
-    private List<float> loggedSpeeds = new List<float>();
-    private float avgSpeed = 0;
+    private List<float> loggedSpeeds;
+    private float avgSpeed;
 
     //stores the time the car spent on the road
-    private long timeOnRoad = 0;
+    private long timeOnRoad;
     Stopwatch stopwatch = new Stopwatch();
 
 
@@ -51,8 +52,24 @@ public class WaypointController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //start stopwatch that will count the time on road
-        
+       
+
+    }
+
+    private void OnEnable()
+    {
+        /*
+         * this will always reset vars used by the script to be used next time it
+         * the vehicle object gets activated out of the pool 
+         */
+        movementSpeed = 0f;
+        acceleration = 0.0001f;
+
+        loggedSpeeds = new List<float>();
+        avgSpeed = 0;
+
+        timeOnRoad = 0;
+
         stopwatch.Start();
 
         //add to route list
@@ -70,14 +87,12 @@ public class WaypointController : MonoBehaviour
         //routes.Add(fifthSide2);
         routes.Add(sixthSide1);
         //routes.Add(sixthSide2);
-
-
         FindRoute();
         FindFirstWaypoint(currentRoute);
         //Debug.Log(currentRoute.ToString());
 
-        
     }
+
 
     // Update is called once per frame
     void Update()
@@ -95,10 +110,6 @@ public class WaypointController : MonoBehaviour
 
         //find next waypoint
         updateWaypoint();
-
-
-
-
 
 
     }
@@ -183,8 +194,8 @@ public class WaypointController : MonoBehaviour
 
                 writeData(currentRoute[0].transform.parent.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString());
 
-                enabled = false;
-                Destroy(this.gameObject);
+                //deactivate vehicle to be returned to object pool
+                this.gameObject.SetActive(false);
                 
 
             }
