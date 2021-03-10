@@ -135,10 +135,10 @@ public class spawner : MonoBehaviour
             {
 
                 case "Road1":
-                    spawnRate = Random.Range(1.0f, 2.0f);
+                    spawnRate = Random.Range(2.0f, 3.0f);
                     break;
                 case "Road2":
-                    spawnRate = Random.Range(1.0f, 2.0f);
+                    spawnRate = Random.Range(2.0f, 3.0f);
                     break;
                 case "FirstSide1":
                     spawnRate = Random.Range(4.0f, 5.0f);
