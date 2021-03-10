@@ -4329,6 +4329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 514146225}
   - component: {fileID: 514146226}
+  - component: {fileID: 514146227}
   m_Layer: 0
   m_Name: MajorIntersection1
   m_TagString: Untagged
@@ -4368,10 +4369,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
+  currentPhase: 12
+--- !u!114 &514146227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514146224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1495eece5015cb4428014f6e9228cb5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   detector1: {fileID: 1408211833}
   detector2: {fileID: 715509818}
   detector3: {fileID: 894986528}
   detector4: {fileID: 178285466}
+  street1Count: 0
+  street2Count: 0
+  street3Count: 0
+  street4Count: 0
 --- !u!4 &534205645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8643934212974112539, guid: d5818ad0c79452946badaf4fa184a635,
@@ -9432,17 +9450,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126122794}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  detector1: {fileID: 195014825}
-  detector2: {fileID: 937774247}
-  detector3: {fileID: 0}
-  detector4: {fileID: 388630321}
+  currentPhase: 12
 --- !u!1 &1134551328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 182628, guid: b902c7d22d14fa843846ba35e963190b,
@@ -15361,17 +15376,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742888622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  detector1: {fileID: 703538250}
-  detector2: {fileID: 723786665}
-  detector3: {fileID: 1670671714}
-  detector4: {fileID: 981255955}
+  currentPhase: 12
 --- !u!4 &1748288141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8301888787845796474, guid: e936d1264c8c0344388a116253472bb1,
@@ -16165,17 +16177,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939624356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  detector1: {fileID: 1490762172}
-  detector2: {fileID: 714621894}
-  detector3: {fileID: 0}
-  detector4: {fileID: 1239979465}
+  currentPhase: 12
 --- !u!4 &1963057348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5004291603844284698, guid: 4f755df29b7f3c94ead457a8e60e5147,
