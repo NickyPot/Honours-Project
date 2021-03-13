@@ -30,14 +30,14 @@ public class spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainRoad1= carPrefab.GetComponent<WaypointController>().mainRoad1;
-        mainRoad2 = carPrefab.GetComponent<WaypointController>().mainRoad2;
-        firstSide1 = carPrefab.GetComponent<WaypointController>().firstSide1;
-        secondSide1 = carPrefab.GetComponent<WaypointController>().secondSide1;
-        thirdSide1 = carPrefab.GetComponent<WaypointController>().thirdSide1;
-        fourthSide1 = carPrefab.GetComponent<WaypointController>().fourthSide1;
-        fifthSide1 = carPrefab.GetComponent<WaypointController>().fifthSide1;
-        sixthSide1 = carPrefab.GetComponent<WaypointController>().sixthSide1;
+        //mainRoad1= carPrefab.GetComponent<WaypointController>().mainRoad1;
+        //mainRoad2 = carPrefab.GetComponent<WaypointController>().mainRoad2;
+        //firstSide1 = carPrefab.GetComponent<WaypointController>().firstSide1;
+        //secondSide1 = carPrefab.GetComponent<WaypointController>().secondSide1;
+        //thirdSide1 = carPrefab.GetComponent<WaypointController>().thirdSide1;
+        //fourthSide1 = carPrefab.GetComponent<WaypointController>().fourthSide1;
+        //fifthSide1 = carPrefab.GetComponent<WaypointController>().fifthSide1;
+        //sixthSide1 = carPrefab.GetComponent<WaypointController>().sixthSide1;
 
         //set prefab to inactive before instatiating
         //this is done so that it doesn't mess with the waypointcontroller script
@@ -48,17 +48,17 @@ public class spawner : MonoBehaviour
         GameObject tmp;
         for (int i = 0; i < poolingAmount; i++)
         {
-            tmp = Instantiate(carPrefOriginal);
-            tmp.GetComponent<WaypointController>().mainRoad1 = mainRoad1;
-            tmp.GetComponent<WaypointController>().mainRoad2 = mainRoad2;
-            tmp.GetComponent<WaypointController>().firstSide1 = firstSide1;
-            tmp.GetComponent<WaypointController>().secondSide1 = secondSide1;
-            tmp.GetComponent<WaypointController>().thirdSide1 = thirdSide1;
-            tmp.GetComponent<WaypointController>().fourthSide1 = fourthSide1;
-            tmp.GetComponent<WaypointController>().fifthSide1 = fifthSide1;
-            tmp.GetComponent<WaypointController>().sixthSide1 = sixthSide1;
-            tmp.SetActive(false);
-            carPool.Add(tmp);
+            //tmp = Instantiate(carPrefOriginal);
+            //tmp.GetComponent<WaypointController>().mainRoad1 = mainRoad1;
+            //tmp.GetComponent<WaypointController>().mainRoad2 = mainRoad2;
+            //tmp.GetComponent<WaypointController>().firstSide1 = firstSide1;
+            //tmp.GetComponent<WaypointController>().secondSide1 = secondSide1;
+            //tmp.GetComponent<WaypointController>().thirdSide1 = thirdSide1;
+            //tmp.GetComponent<WaypointController>().fourthSide1 = fourthSide1;
+            //tmp.GetComponent<WaypointController>().fifthSide1 = fifthSide1;
+            //tmp.GetComponent<WaypointController>().sixthSide1 = sixthSide1;
+            //tmp.SetActive(false);
+            //carPool.Add(tmp);
         
         }
 

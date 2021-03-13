@@ -9,26 +9,15 @@ using System.Text;
 public class WaypointController : MonoBehaviour
 {
     //route list
-    public List<List<Transform>> routes = new List<List<Transform>>();
+    public List<GameObject> routes = new List<GameObject>();
 
-    //initialise road waypoint lists
-    public List<Transform> mainRoad1 = new List<Transform>();
-    public List<Transform> mainRoad2 = new List<Transform>();
-    public List<Transform> firstSide1 = new List<Transform>();
-    public List<Transform> firstSide2 = new List<Transform>();
-    public List<Transform> secondSide1 = new List<Transform>();
-    public List<Transform> secondSide2 = new List<Transform>();
-    public List<Transform> thirdSide1 = new List<Transform>();
-    public List<Transform> thirdSide2 = new List<Transform>();
-    public List<Transform> fourthSide1 = new List<Transform>();
-    public List<Transform> fourthSide2 = new List<Transform>();
-    public List<Transform> fifthSide1 = new List<Transform>();
-    public List<Transform> fifthSide2 = new List<Transform>();
-    public List<Transform> sixthSide1 = new List<Transform>();
-    public List<Transform> sixthSide2 = new List<Transform>();
+    public Transform startingPoint;
+    public Transform endingPoint;
+
+
 
     //init vars for moving through waypoints
-    private List<Transform> currentRoute;
+    private GameObject currentRoute;
     private Transform targetWaypoint;
     private float minDistance = 0.1f;
     private int lastWaypointIndex;
@@ -52,7 +41,9 @@ public class WaypointController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        //Transform test = ge.transform.Find("Road 1.1");
+
+        //print(test.GetChild(2).transform.name);
 
     }
 
@@ -72,24 +63,10 @@ public class WaypointController : MonoBehaviour
 
         stopwatch.Start();
 
-        //add to route list
-        routes.Add(mainRoad1);
-        routes.Add(mainRoad2);
-        routes.Add(firstSide1);
-        //routes.Add(firstSide2);
-        routes.Add(secondSide1);
-        //routes.Add(secondSide2);
-        routes.Add(thirdSide1);
-        //routes.Add(thirdSide2);
-        routes.Add(fourthSide1);
-        //routes.Add(fourthSide2);
-        routes.Add(fifthSide1);
-        //routes.Add(fifthSide2);
-        routes.Add(sixthSide1);
-        //routes.Add(sixthSide2);
+       
         FindRoute();
+        //print(currentRoute.name);
         FindFirstWaypoint(currentRoute);
-        //Debug.Log(currentRoute.ToString());
 
     }
 
@@ -120,16 +97,16 @@ public class WaypointController : MonoBehaviour
         //set variables
         Vector3 currentPosition;
         float bestDistance = Mathf.Infinity;
-        List<Transform> potentialRoute = null;
+        GameObject potentialRoute = null;
 
         //get your own poisition
         currentPosition = transform.position;
 
 
         //look in the waypoints list to see which one is closest
-        foreach (List<Transform> route in routes)
+        foreach (GameObject route in routes)
         {
-            float currentDistance = Vector3.Distance(currentPosition, route[0].position);
+            float currentDistance = Vector3.Distance(currentPosition, route.transform.GetChild(0).position);
             //Debug.Log(currentDistance);
 
 
@@ -150,6 +127,7 @@ public class WaypointController : MonoBehaviour
 
 
 
+
         }
         //set the true current route
         currentRoute = potentialRoute;
@@ -157,14 +135,82 @@ public class WaypointController : MonoBehaviour
 
     }
 
-   
+    void FindConsequentRoute(Transform endingPoint)
+    {
+
+        //set variables
+        Vector3 currentPosition;
+        float bestDistance = Mathf.Infinity;
+        GameObject potentialRoute = null;
+
+        //get your own poisition
+        currentPosition = transform.position;
+
+
+        //look in the waypoints list to see which one is closest
+        foreach (GameObject route in routes)
+        {
+            float currentDistance = Vector3.Distance(route.transform.GetChild(0).position, endingPoint.transform.position);
+
+            float testDist = Vector3.Distance(route.transform.GetChild(0).position, transform.position);
+            //Debug.Log(currentDistance);
+
+
+            //if the distance of the current looking waypoint is smaller than the best one so far
+            if (currentDistance <= bestDistance && testDist < 10f)
+            {
+                /*
+                 * choose the road only if its the road you finish in or isn't a side road
+                 * this prevents turning to side roads parallel to the one you want to finish in
+                 * because the starting point of that side road is closer to ending point than the starting
+                 * point of a main road
+                */
+
+
+                if (!route.name.Contains("Side") || route.name == endingPoint.parent.name)
+                {
+
+                    //prevents u turns on the main roads
+                    if (!(currentRoute.name.Contains("Road 1") && route.name.Contains("Road 2")) &&
+                        !(currentRoute.name.Contains("Road 2") && route.name.Contains("Road 1")))
+                    {
+                        //reset best distance
+                        bestDistance = currentDistance;
+
+
+                        //set as the target waypoint index
+                        potentialRoute = route;
+
+                        print(route.name + ", " + currentRoute.name);
+
+
+                    }
+
+
+                }
+
+
+
+
+            }
+
+
+
+
+        }
+
+        currentRoute = potentialRoute;
+
+    }
+
+
 
     //get the first waypoint of the given route, used to start the car
-    void FindFirstWaypoint(List<Transform> route)
+    void FindFirstWaypoint(GameObject route)
     {
-       
 
-        targetWaypoint = route[1];
+
+        targetWaypoint = route.transform.GetChild(0).transform;
         
     
     }
@@ -178,25 +224,40 @@ public class WaypointController : MonoBehaviour
         if (distance < minDistance)
         {
             //get the index of it in the list
-            int index = currentRoute.IndexOf(targetWaypoint);
+            int index = targetWaypoint.GetSiblingIndex();
 
             //if we are at the end, then destroy the car
-            if (index + 1 >= currentRoute.Count())
+            if (index + 1 >= currentRoute.transform.childCount)
             {
-                //stops the timer and logs the time the car was on the road
-                //TODO: logs on console, switch to csv file
-                stopwatch.Stop();
-                timeOnRoad = stopwatch.ElapsedMilliseconds;
+                //if the current ending point is not the overall ending point
+                //ie you have only finished the part of the route and not the overall route
+                if (currentRoute.transform.GetChild(index) == endingPoint)
+                {
+                    //stops the timer and logs the time the car was on the road
+                    //TODO: logs on console, switch to csv file
+                    stopwatch.Stop();
+                    timeOnRoad = stopwatch.ElapsedMilliseconds;
+
+
+                    //calculate avg speed of vehicle
+                    calcAvgSpeed();
+
+                    writeData(currentRoute.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString());
+
+
+                    //deactivate vehicle to be returned to object pool
+                    this.gameObject.SetActive(false);
+
+                }
+
+                else
+                {
+                    //find successive route
+                    FindConsequentRoute(endingPoint);
+                    FindFirstWaypoint(currentRoute);
                 
+                }
 
-                //calculate avg speed of vehicle
-                calcAvgSpeed();
-
-                writeData(currentRoute[0].transform.parent.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString());
-
-                //deactivate vehicle to be returned to object pool
-                this.gameObject.SetActive(false);
-                
 
             }
 
@@ -204,14 +265,14 @@ public class WaypointController : MonoBehaviour
             else
             {
 
-                targetWaypoint = currentRoute[index + 1];
+                targetWaypoint = currentRoute.transform.GetChild(index + 1);
 
             }
-           
 
-        
+
+
         }
-    
+
     }
     private void OnDrawGizmos()
     {
