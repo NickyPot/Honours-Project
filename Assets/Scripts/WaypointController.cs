@@ -12,7 +12,8 @@ public class WaypointController : MonoBehaviour
     public List<GameObject> routes = new List<GameObject>();
 
     public Transform startingPoint;
-    public Transform endingPoint;
+    public List<GameObject> possibleEndingPoints;
+    public Transform endPoint;
 
 
 
@@ -45,6 +46,9 @@ public class WaypointController : MonoBehaviour
 
         //print(test.GetChild(2).transform.name);
 
+        FindRoute();
+        RemoveSameRoute();
+
     }
 
     private void OnEnable()
@@ -63,10 +67,11 @@ public class WaypointController : MonoBehaviour
 
         stopwatch.Start();
 
-       
+        
         FindRoute();
-        //print(currentRoute.name);
         FindFirstWaypoint(currentRoute);
+        PickEndingPoint();
+       
 
     }
 
@@ -215,6 +220,82 @@ public class WaypointController : MonoBehaviour
     
     }
 
+    //this finds the ending point that is right next to the starting point
+    //and deletes it from the possible ending point list
+    void RemoveSameRoute()
+    {
+        GameObject pointToRemove = null;
+
+        foreach (GameObject endingPoint in possibleEndingPoints)
+        {
+            if (currentRoute.transform.parent == endingPoint.transform.parent.transform.parent)
+            {
+                pointToRemove = endingPoint;
+            
+            }
+
+        
+        
+        }
+        
+
+        possibleEndingPoints.Remove(pointToRemove);
+
+
+
+    }
+
+    //pick the ending point (where the car will end up) based on probability
+    void PickEndingPoint()
+    {
+        float routeNum = Random.Range(0, 1.0f);
+        possibleEndingPoints.Exists(x => x.name.Contains("Road 1"));
+
+        if (possibleEndingPoints.Exists(x => x.transform.parent.name.Contains("Road 1")) && routeNum < 0.35f)
+        {
+            endPoint = possibleEndingPoints.Find(x => x.transform.parent.name.Contains("Road 1")).transform;
+        
+        }
+
+        else if (possibleEndingPoints.Exists(x => x.transform.parent.name.Contains("Road 2")) && routeNum > 0.35f && routeNum < 0.70f)
+        {
+            endPoint = possibleEndingPoints.Find(x => x.transform.parent.name.Contains("Road 2")).transform;
+        }
+
+        else if (possibleEndingPoints.Exists(x => x.transform.parent.name.Contains("FirstSide2")) && routeNum > 0.70f && routeNum < 0.75f)
+        {
+            endPoint = possibleEndingPoints.Find(x => x.transform.parent.name.Contains("FirstSide2")).transform;
+        }
+
+        else if (possibleEndingPoints.Exists(x => x.transform.parent.name.Contains("SecondtSide2")) && routeNum > 0.75f && routeNum < 0.80f)
+        {
+            endPoint = possibleEndingPoints.Find(x => x.transform.parent.name.Contains("SecondtSide2")).transform;
+        }
+
+        else if (possibleEndingPoints.Exists(x => x.transform.parent.name.Contains("ThirdSide2")) && routeNum > 0.80f && routeNum < 0.85f)
+        {
+            endPoint = possibleEndingPoints.Find(x => x.transform.parent.name.Contains("ThirdSide2")).transform;
+        }
+
+        else if (possibleEndingPoints.Exists(x => x.transform.parent.name.Contains("FourthSide2")) && routeNum > 0.85f && routeNum < 0.90f)
+        {
+            endPoint = possibleEndingPoints.Find(x => x.transform.parent.name.Contains("FourthSide2")).transform;
+        }
+
+        else if (possibleEndingPoints.Exists(x => x.transform.parent.name.Contains("FifthSide2")) && routeNum > 0.9f && routeNum < 0.95f)
+        {
+            endPoint = possibleEndingPoints.Find(x => x.transform.parent.name.Contains("FifthSide2")).transform;
+        }
+
+        else if (possibleEndingPoints.Exists(x => x.transform.parent.name.Contains("SixthSide2")) && routeNum > 0.95f && routeNum < 1.00f)
+        {
+            endPoint = possibleEndingPoints.Find(x => x.transform.parent.name.Contains("SixthSide2")).transform;
+        }
+
+
+
+    }
+
     void updateWaypoint()
     {
         //get distance from next waypoint
@@ -231,7 +312,7 @@ public class WaypointController : MonoBehaviour
             {
                 //if the current ending point is not the overall ending point
                 //ie you have only finished the part of the route and not the overall route
-                if (currentRoute.transform.GetChild(index) == endingPoint)
+                if (currentRoute.transform.GetChild(index) == endPoint)
                 {
                     //stops the timer and logs the time the car was on the road
                     //TODO: logs on console, switch to csv file
@@ -253,7 +334,7 @@ public class WaypointController : MonoBehaviour
                 else
                 {
                     //find successive route
-                    FindConsequentRoute(endingPoint);
+                    FindConsequentRoute(endPoint);
                     FindFirstWaypoint(currentRoute);
                 
                 }
