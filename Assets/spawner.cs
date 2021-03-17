@@ -13,31 +13,27 @@ public class spawner : MonoBehaviour
     public GameObject carPrefOriginal;
 
 
-    List<Transform> mainRoad1 = new List<Transform>();
-    List<Transform> mainRoad2 = new List<Transform>();
-    List<Transform> firstSide1 = new List<Transform>();
-    List<Transform> secondSide1 = new List<Transform>();
-    List<Transform> thirdSide1 = new List<Transform>();
-    List<Transform> fourthSide1 = new List<Transform>();
-    List<Transform> fifthSide1 = new List<Transform>();
-    List<Transform> sixthSide1 = new List<Transform>();
 
     public int poolingAmount = 30;
     public List<GameObject> carPool;
+
+    public List<GameObject> possibleEndingPoints;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //mainRoad1= carPrefab.GetComponent<WaypointController>().mainRoad1;
-        //mainRoad2 = carPrefab.GetComponent<WaypointController>().mainRoad2;
-        //firstSide1 = carPrefab.GetComponent<WaypointController>().firstSide1;
-        //secondSide1 = carPrefab.GetComponent<WaypointController>().secondSide1;
-        //thirdSide1 = carPrefab.GetComponent<WaypointController>().thirdSide1;
-        //fourthSide1 = carPrefab.GetComponent<WaypointController>().fourthSide1;
-        //fifthSide1 = carPrefab.GetComponent<WaypointController>().fifthSide1;
-        //sixthSide1 = carPrefab.GetComponent<WaypointController>().sixthSide1;
+
+        //find where the spawner is located (closest route first point)
+        //and based on that it finds the corresponding spawnrate
+        FindClosestWaypoint();
+        findSpawnRate();
+
+
+       
+        RemoveSameRoute();
 
         //set prefab to inactive before instatiating
         //this is done so that it doesn't mess with the waypointcontroller script
@@ -48,25 +44,16 @@ public class spawner : MonoBehaviour
         GameObject tmp;
         for (int i = 0; i < poolingAmount; i++)
         {
-            //tmp = Instantiate(carPrefOriginal);
-            //tmp.GetComponent<WaypointController>().mainRoad1 = mainRoad1;
-            //tmp.GetComponent<WaypointController>().mainRoad2 = mainRoad2;
-            //tmp.GetComponent<WaypointController>().firstSide1 = firstSide1;
-            //tmp.GetComponent<WaypointController>().secondSide1 = secondSide1;
-            //tmp.GetComponent<WaypointController>().thirdSide1 = thirdSide1;
-            //tmp.GetComponent<WaypointController>().fourthSide1 = fourthSide1;
-            //tmp.GetComponent<WaypointController>().fifthSide1 = fifthSide1;
-            //tmp.GetComponent<WaypointController>().sixthSide1 = sixthSide1;
-            //tmp.SetActive(false);
-            //carPool.Add(tmp);
-        
+            tmp = Instantiate(carPrefOriginal);
+            tmp.GetComponent<WaypointController>().routes = carPrefab.GetComponent<WaypointController>().routes;
+            tmp.GetComponent<WaypointController>().possibleEndingPoints = possibleEndingPoints;
+          
+            tmp.SetActive(false);
+            carPool.Add(tmp);
+
         }
 
 
-        //find where the spawner is located (closest route first point)
-        //and based on that it finds the corresponding spawnrate
-        FindClosestWaypoint();
-        findSpawnRate();
 
         
         StartCoroutine(carWave());
@@ -134,10 +121,10 @@ public class spawner : MonoBehaviour
             switch (closestWaypoint.transform.parent.gameObject.name)
             {
 
-                case "Road1":
+                case "Road 1.1":
                     spawnRate = Random.Range(2.0f, 3.0f);
                     break;
-                case "Road2":
+                case "Road 2.1":
                     spawnRate = Random.Range(2.0f, 3.0f);
                     break;
                 case "FirstSide1":
@@ -205,6 +192,32 @@ public class spawner : MonoBehaviour
 
 
         }
+
+    }
+
+
+    //this finds the ending point that is right next to the starting point
+    //and deletes it from the possible ending point list
+    void RemoveSameRoute()
+    {
+        GameObject pointToRemove = null;
+
+        foreach (GameObject endingPoint in possibleEndingPoints)
+        {
+            if (closestWaypoint.transform.parent.transform.parent == endingPoint.transform.parent.transform.parent)
+            {
+                pointToRemove = endingPoint;
+
+
+            }
+            //print(closestWaypoint.transform.parent.transform.parent.name + ", " + endingPoint.transform.parent.transform.parent.name);
+
+        }
+
+
+        possibleEndingPoints.Remove(pointToRemove);
+
+
 
     }
 
