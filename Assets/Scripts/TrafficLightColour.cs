@@ -107,7 +107,10 @@ public class TrafficLightColour : MonoBehaviour
 
         }
 
-        this.gameObject.GetComponent<TrafficLightStats>().saveData();
+        if (currentPhase != nextPhase)
+        {
+            this.gameObject.GetComponent<TrafficLightStats>().saveData();
+        }
 
 
     }
@@ -144,7 +147,10 @@ public class TrafficLightColour : MonoBehaviour
 
         }
 
-        this.gameObject.GetComponent<TrafficLightStats>().saveData();
+        if (currentPhase != nextPhase)
+        {
+            this.gameObject.GetComponent<TrafficLightStats>().saveData();
+        }
 
 
 
@@ -163,7 +169,7 @@ public class TrafficLightColour : MonoBehaviour
                 if (street1Count > 4 || street2Count > 4)
                 {
                     majorPhaseChange(0);
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(3);
 
                     nextPhase = 12;
                     majorPhaseChange(nextPhase);
@@ -186,7 +192,7 @@ public class TrafficLightColour : MonoBehaviour
                         {
 
                             majorPhaseChange(0);
-                            yield return new WaitForSeconds(1);
+                            yield return new WaitForSeconds(3);
 
 
                             nextPhase = 4;
@@ -195,7 +201,7 @@ public class TrafficLightColour : MonoBehaviour
                             yield return new WaitForSeconds(7);
 
                             majorPhaseChange(0);
-                            yield return new WaitForSeconds(1);
+                            yield return new WaitForSeconds(3);
 
                             nextPhase = 3;
                             majorPhaseChange(nextPhase);
@@ -212,7 +218,7 @@ public class TrafficLightColour : MonoBehaviour
                         {
 
                             majorPhaseChange(0);
-                            yield return new WaitForSeconds(1);
+                            yield return new WaitForSeconds(3);
 
 
                             nextPhase = 3;
@@ -226,7 +232,7 @@ public class TrafficLightColour : MonoBehaviour
                         {
 
                             majorPhaseChange(0);
-                            yield return new WaitForSeconds(1);
+                            yield return new WaitForSeconds(3);
 
 
                             nextPhase = 4;
@@ -260,9 +266,14 @@ public class TrafficLightColour : MonoBehaviour
                 //main roads congested
                 if (street1Count > 4 || street2Count > 4)
                 {
+                    if (nextPhase != currentPhase)
+                    {
+                        minorPhaseChange(0);
+                        yield return new WaitForSeconds(3);
 
-                    minorPhaseChange(0);
-                    yield return new WaitForSeconds(1);
+
+                    }
+                                      
 
                     nextPhase = 12;
                     minorPhaseChange(nextPhase);
@@ -284,7 +295,7 @@ public class TrafficLightColour : MonoBehaviour
                     {
 
                         minorPhaseChange(0);
-                        yield return new WaitForSeconds(1);
+                        yield return new WaitForSeconds(3);
 
 
                         nextPhase = 4;

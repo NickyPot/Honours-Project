@@ -14,6 +14,7 @@ public class WaypointController : MonoBehaviour
    // public Transform startingPoint;
     public List<GameObject> possibleEndingPoints;
     public Transform endPoint;
+    private Transform startPoint;
 
 
 
@@ -66,6 +67,8 @@ public class WaypointController : MonoBehaviour
         //find what route the car is on, its first waypoint and where it should finish
         currentRoute = FindRoute();
         targetWaypoint = FindFirstWaypoint(currentRoute);
+        //save first point for stat tracking
+        startPoint = targetWaypoint;
         endPoint = PickEndingPoint(possibleEndingPoints);
        
 
@@ -289,7 +292,7 @@ public class WaypointController : MonoBehaviour
                     //calculate avg speed of vehicle
                     calcAvgSpeed();
 
-                    writeData(currentRoute.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString());
+                    writeData(startPoint.transform.parent.name, currentRoute.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString());
 
 
                     //deactivate vehicle to be returned to object pool
@@ -361,10 +364,10 @@ public class WaypointController : MonoBehaviour
     
     }
 
-    void writeData(string routeName, string avgSpeed, string timeOnRoad)
+    void writeData(string _startPointName, string _routeName, string _avgSpeed, string _timeOnRoad)
     {
         TextWriter txtWriter = new StreamWriter("test.txt", true);
-        txtWriter.WriteLine(routeName + ", " + avgSpeed + ", " + timeOnRoad);
+        txtWriter.WriteLine(_startPointName + ", " + _routeName + ", " + _avgSpeed + ", " + _timeOnRoad);
         txtWriter.Close();
     
     }

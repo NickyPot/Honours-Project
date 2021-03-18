@@ -148,26 +148,26 @@ public class TrafficLightStats : MonoBehaviour
 
 
 
-            if (street1Count > 0 && trafficLight1.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
+            if (maxStreet1Count > 0 && trafficLight1.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street1TimeCount++;
 
             }
 
-            if (street2Count > 0 && trafficLight2.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
+            if (maxStreet2Count > 0 && trafficLight2.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street2TimeCount++;
 
             }
 
-            if (street3Count > 0 && trafficLight3.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
+            if (maxStreet3Count > 0 && trafficLight3.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street3TimeCount++;
 
             }
 
 
-            if (street4Count > 0 && trafficLight4.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
+            if (maxStreet4Count > 0 && trafficLight4.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street4TimeCount++;
 
