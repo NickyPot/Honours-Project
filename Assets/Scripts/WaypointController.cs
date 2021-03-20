@@ -36,7 +36,10 @@ public class WaypointController : MonoBehaviour
     private long timeOnRoad;
     Stopwatch stopwatch = new Stopwatch();
 
-
+    //these 3 vars are used to record whether the vehicle is stopped at a light
+    public int timesStopedAtLight;
+    public bool stoppedAtLight;
+    bool recordedState;
     
 
     // Start is called before the first frame update
@@ -60,6 +63,9 @@ public class WaypointController : MonoBehaviour
         loggedSpeeds = new List<float>();
         avgSpeed = 0;
         timeOnRoad = 0;
+        timesStopedAtLight = 0;
+        stoppedAtLight = false;
+        recordedState = false;
 
         //restart stopwatch
         stopwatch.Start();
@@ -292,7 +298,7 @@ public class WaypointController : MonoBehaviour
                     //calculate avg speed of vehicle
                     calcAvgSpeed();
 
-                    writeData(startPoint.transform.parent.name, currentRoute.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString());
+                    writeData(startPoint.transform.parent.name, currentRoute.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString(), timesStopedAtLight.ToString());
 
 
                     //deactivate vehicle to be returned to object pool
@@ -350,6 +356,16 @@ public class WaypointController : MonoBehaviour
         {
 
             _movementSpeed = 0;
+            if (hit.transform.gameObject.GetComponent<WaypointController>().stoppedAtLight)
+            {
+                EnableStoppedState();
+                
+
+            }
+            else 
+            {
+                DisableStoppedState();
+            }
         
         }
 
@@ -364,10 +380,10 @@ public class WaypointController : MonoBehaviour
     
     }
 
-    void writeData(string _startPointName, string _routeName, string _avgSpeed, string _timeOnRoad)
+    void writeData(string _startPointName, string _routeName, string _avgSpeed, string _timeOnRoad, string _stops)
     {
         TextWriter txtWriter = new StreamWriter("test.txt", true);
-        txtWriter.WriteLine(_startPointName + ", " + _routeName + ", " + _avgSpeed + ", " + _timeOnRoad);
+        txtWriter.WriteLine(_startPointName + ", " + _routeName + ", " + _avgSpeed + ", " + _timeOnRoad + ", " + _stops);
         txtWriter.Close();
     
     }
@@ -381,6 +397,7 @@ public class WaypointController : MonoBehaviour
         {
             movementSpeed = 0f;
             acceleration = 0;
+            EnableStoppedState();
 
         }
         
@@ -391,8 +408,39 @@ public class WaypointController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         acceleration = 0.0001f;
-        
+        DisableStoppedState();        
     }
+
+    //this is called when the car is stopped at a traffic light
+    private void EnableStoppedState()
+    {
+        
+        stoppedAtLight = true;
+
+        if (!recordedState)
+        {
+            timesStopedAtLight++;
+        }
+
+        //this is used to indicate that the stopped counter has already been increased
+        //prevents recording multiple times for a single stop
+        recordedState = true;
+    
+    
+    }
+
+    //called when the car is no longer stopped at a light
+    //resets the vars
+    private void DisableStoppedState()
+    {
+        stoppedAtLight = false;
+
+
+        recordedState = false;
+
+
+    }
+
 
 
 

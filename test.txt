@@ -72,3 +72,91 @@ Road 1.1, Road 1.5, 0.08690095, 21355
 Road 2.1, Road 2.5, 0.08685094, 16579
 Road 2.1, FifthSide2, 0.05745048, 12947
 Road 1.1, Road 1.5, 0.08690095, 14788
+Road 1.1, Road 1.5, 0.08690095, 11982, 0
+Road 1.1, Road 1.5, 0.08690095, 12290, 0
+Road 2.1, Road 2.5, 0.08685094, 16345, 0
+Road 2.1, Road 2.5, 0.08685094, 12098, 0
+Road 2.1, FourthSide2, 0.06745064, 9578, 0
+Road 1.1, Road 1.5, 0.08690095, 24279, 0
+Road 2.1, SixthSide2, 0.04620031, 22809, 0
+FiftSide1, Road 1.5, 0.01608025, 30291, 1
+FirstSide1, SecondSide2, 0.01715217, 32396, 1
+FirstSide1, Road 2.5, 0.02000833, 27532, 0
+FiftSide1, Road 1.5, 0.05830049, 14809, 0
+FiftSide1, Road 1.5, 0.05830049, 8389, 0
+SecondSide1, Road 2.5, 0.01175929, 42539, 1
+SecondSide1, Road 2.5, 0.01512844, 33380, 0
+Road 1.1, FifthSide2, 0.09590109, 13940, 0
+Road 2.1, Road 2.5, 0.08685094, 13567, 0
+Road 1.1, FirstSide2, 0.06345057, 13369, 0
+Road 2.1, SecondSide2, 0.08655094, 13765, 0
+Road 2.1, Road 2.5, 0.08685094, 23702, 0
+Road 1.1, Road 1.5, 0.08690095, 24099, 0
+SixthSide1, Road 1.5, 0.009729003, 23278, 0
+SixthSide1, Road 1.5, 0.01269667, 17668, 0
+FiftSide1, SixthSide2, 0.01426277, 31140, 0
+SecondSide1, Road 2.5, 0.01001661, 41201, 1
+FiftSide1, Road 1.5, 0.02582509, 16215, 0
+FiftSide1, SixthSide2, 0.06085053, 7738, 0
+SecondSide1, ThirdSide2, 0.01817886, 31962, 0
+FiftSide1, FourthSide2, 0.02510136, 28830, 0
+SecondSide1, FirstSide2, 0.04551536, 10745, 0
+FourthSide1, Road 1.5, 0.01129743, 49354, 2
+FourthSide1, Road 1.5, 0.01297845, 43827, 0
+FourthSide1, Road 1.5, 0.01488322, 38271, 0
+ThirdSide1, Road 2.5, 0.01287213, 45981, 1
+FourthSide1, SixthSide2, 0.02199569, 27184, 0
+Road 1.1, Road 1.5, 0.02589358, 35673, 1
+FourthSide1, Road 2.5, 0.02202956, 33422, 1
+ThirdSide1, Road 1.5, 0.01474761, 51808, 1
+SixthSide1, Road 2.5, 0.01816446, 51414, 2
+SixthSide1, Road 2.5, 0.02810814, 33914, 0
+ThirdSide1, Road 1.5, 0.01852804, 41926, 0
+FiftSide1, Road 2.5, 0.02024496, 52890, 1
+ThirdSide1, Road 1.5, 0.02114754, 36978, 0
+FiftSide1, Road 2.5, 0.02258478, 48167, 0
+ThirdSide1, Road 1.5, 0.02466711, 31896, 0
+ThirdSide1, Road 1.5, 0.0296863, 26829, 0
+FirstSide1, Road 1.5, 0.01772879, 53438, 2
+FiftSide1, FirstSide2, 0.03384066, 33361, 0
+FiftSide1, Road 2.5, 0.04873545, 23167, 0
+Road 2.1, FourthSide2, 0.0290011, 37851, 0
+FirstSide1, SixthSide2, 0.02037011, 48190, 0
+Road 1.1, FourthSide2, 0.02352112, 48863, 1
+FirstSide1, SixthSide2, 0.02296326, 42793, 0
+FirstSide1, Road 1.5, 0.02601882, 37175, 0
+FirstSide1, Road 1.5, 0.0308003, 31744, 0
+Road 2.1, ThirdSide2, 0.0241925, 55658, 0
+SecondSide1, Road 1.5, 0.01794179, 49217, 0
+SecondSide1, Road 1.5, 0.02329356, 38043, 0
+SecondSide1, Road 1.5, 0.02741653, 32694, 0
+SecondSide1, Road 1.5, 0.03336385, 27238, 0
+Road 1.1, Road 1.5, 0.02695253, 59063, 0
+Road 1.1, Road 1.5, 0.02940028, 32248, 0
+Road 1.1, Road 1.5, 0.03593809, 29627, 0
+FirstSide1, Road 2.5, 0.06170054, 61089, 0
+FiftSide1, Road 1.5, 0.02692683, 44484, 0
+FiftSide1, Road 1.5, 0.03896683, 63733, 0
+Road 2.1, Road 2.5, 0.01797323, 65457, 2
+ThirdSide1, Road 2.5, 0.01541705, 39780, 1
+ThirdSide1, Road 2.5, 0.01780306, 34718, 0
+ThirdSide1, Road 2.5, 0.02066742, 29682, 0
+Road 1.1, SecondSide2, 0.03655043, 70637, 0
+ThirdSide1, Road 2.5, 0.03167117, 71052, 0
+FourthSide1, Road 2.5, 0.01736979, 43470, 2
+FourthSide1, Road 2.5, 0.02010475, 37870, 0
+FourthSide1, Road 2.5, 0.02856541, 26336, 0
+FirstSide1, FourthSide2, 0.01613625, 50673, 2
+FiftSide1, Road 1.5, 0.05830049, 70989, 0
+Road 1.1, FirstSide2, 0.06345057, 7428, 0
+Road 2.1, Road 2.5, 0.08685094, 14179, 0
+Road 2.1, Road 2.5, 0.08685094, 41981, 0
+Road 2.1, FirstSide2, 0.08815097, 28658, 0
+Road 1.1, Road 1.5, 0.08690095, 28579, 0
+Road 1.1, Road 1.5, 0.08690095, 24177, 0
+Road 2.1, ThirdSide2, 0.07900082, 26354, 0
+Road 1.1, Road 1.5, 0.08690095, 24316, 0
+Road 2.1, Road 2.5, 0.08685094, 44756, 0
+SixthSide1, Road 1.5, 0.008310156, 52652, 1
+SixthSide1, Road 1.5, 0.01014828, 38443, 1
+FirstSide1, Road 2.5, 0.02341301, 26741, 1
