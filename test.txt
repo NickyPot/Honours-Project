@@ -64,3 +64,11 @@ FourthSide1, SecondSide2, 0.07730079, 20329
 FiftSide1, Road 1.5, 0.04265024, 11603
 Road 1.1, Road 1.5, 0.06899885, 15927
 ThirdSide1, Road 1.5, 0.06174016, 24486
+Road 1.1, Road 1.5, 0.08690095, 10967
+Road 2.1, Road 2.5, 0.08685094, 10992
+Road 2.1, FirstSide2, 0.08815097, 18118
+Road 2.1, FirstSide2, 0.08815097, 18077
+Road 1.1, Road 1.5, 0.08690095, 21355
+Road 2.1, Road 2.5, 0.08685094, 16579
+Road 2.1, FifthSide2, 0.05745048, 12947
+Road 1.1, Road 1.5, 0.08690095, 14788

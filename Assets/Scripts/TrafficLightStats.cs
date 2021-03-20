@@ -20,11 +20,25 @@ public class TrafficLightStats : MonoBehaviour
     public GameObject detector3;
     public GameObject detector4;
 
+    //get the neighbouring intersections
+    public GameObject neighbourIntersection1;
+    public GameObject neighbourIntersection2;
+
+    //the detectors of which counts dont matter for incoming traffic
+    public GameObject irrelevantDetector1;
+    public GameObject irrelevantDetector2;
+
     //stores the count of cars in the vicinity of each traffic light
     public int street1Count;
     public int street2Count;
     public int street3Count;
     public int street4Count;
+    //the sum of the amount of cars in the intersection
+    //this, along with the irrelevant detectors are used by neighbouring intersections to calculate the amount of incoming cars
+    public int intersectionSumCount;
+
+    public int incomingTrafficCount1;
+    public int incomingTrafficCount2;
 
     //these are used to indicate the maximum amount of cars that have waited at red light in a phase
     private int maxStreet1Count = 0;
@@ -39,7 +53,10 @@ public class TrafficLightStats : MonoBehaviour
     private int street3TimeCount = 0;
     private int street4TimeCount = 0;
 
-    int currentPhase;
+    public int currentPhase;
+    public int neighbourPhase1;
+    public int neighbourPhase2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +81,7 @@ public class TrafficLightStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //get the street counts of the present intersection
         street1Count = detector1.GetComponent<Detector>().count;
         street2Count = detector2.GetComponent<Detector>().count;
 
@@ -74,7 +92,25 @@ public class TrafficLightStats : MonoBehaviour
 
         street4Count = detector4.GetComponent<Detector>().count;
 
+        //get the present intersection car amount
+        intersectionSumCount = street1Count + street2Count + street3Count + street4Count;
+
         currentPhase = this.gameObject.GetComponent<TrafficLightColour>().currentPhase;
+
+        //if there is a neighbour intersection 1 and/or 2, then get their current phase
+        //this, along with incoming car amount is used to predict if there is going to be a wave of cars coming
+        if (neighbourIntersection1 != null)
+        {
+            neighbourPhase1 = neighbourIntersection1.GetComponent<TrafficLightStats>().currentPhase;
+            incomingTrafficCount1 = neighbourIntersection1.GetComponent<TrafficLightStats>().intersectionSumCount - irrelevantDetector1.GetComponent<Detector>().count;
+        }
+
+        if (neighbourIntersection2 != null)
+        {
+            neighbourPhase2 = neighbourIntersection2.GetComponent<TrafficLightStats>().currentPhase;
+            incomingTrafficCount2 = neighbourIntersection2.GetComponent<TrafficLightStats>().intersectionSumCount - irrelevantDetector2.GetComponent<Detector>().count;
+
+        }
 
     }
 
