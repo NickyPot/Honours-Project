@@ -30,6 +30,12 @@ public class TrafficLightColour : MonoBehaviour
     public int currentPhase = 12;
     int nextPhase = 3;
 
+    //vars that store neighbour intersection stats
+    int incomingCount1;
+    int incomingCount2;
+    int neighbourPhase1;
+    int neighbourPhase2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +69,11 @@ public class TrafficLightColour : MonoBehaviour
         street2Count = this.gameObject.GetComponent<TrafficLightStats>().street2Count;
         street3Count = this.gameObject.GetComponent<TrafficLightStats>().street3Count;
         street4Count = this.gameObject.GetComponent<TrafficLightStats>().street4Count;
+
+        incomingCount1 = this.gameObject.GetComponent<TrafficLightStats>().incomingTrafficCount1;
+        incomingCount2 = this.gameObject.GetComponent<TrafficLightStats>().incomingTrafficCount2;
+        neighbourPhase1 = this.gameObject.GetComponent<TrafficLightStats>().neighbourPhase1;
+        neighbourPhase2 = this.gameObject.GetComponent<TrafficLightStats>().neighbourPhase2;
 
     }
 
@@ -250,10 +261,37 @@ public class TrafficLightColour : MonoBehaviour
                     //no roads are congested
                     else
                     {
-                        nextPhase = currentPhase;
-                        majorPhaseChange(nextPhase);
-                        currentPhase = nextPhase;
-                        yield return new WaitForSeconds(7);
+                        //check for incoming wave of cars
+                        //if there is a wave coming then switch to green in the main road
+                        if (incomingCount1 > 9 || incomingCount2 > 9)
+                        {
+                            if (nextPhase != currentPhase)
+                            {
+                                majorPhaseChange(0);
+                                yield return new WaitForSeconds(3);
+
+
+                            }
+
+
+                            nextPhase = 12;
+                            majorPhaseChange(nextPhase);
+                            currentPhase = nextPhase;
+                            yield return new WaitForSeconds(7);
+
+
+                        }
+
+                        //if there is no incoming wave of cars then continue as normal
+                        else
+                        {
+                            nextPhase = currentPhase;
+                            majorPhaseChange(nextPhase);
+                            currentPhase = nextPhase;
+                            yield return new WaitForSeconds(7);
+
+
+                        }
 
                     }
 
@@ -311,10 +349,38 @@ public class TrafficLightColour : MonoBehaviour
                     //no roads are congested
                     else
                     {
-                        nextPhase = currentPhase;
-                        minorPhaseChange(nextPhase);
-                        currentPhase = nextPhase;
-                        yield return new WaitForSeconds(7);
+                        //check for incoming wave of cars
+                        //if there is a wave coming then switch to green in the main road
+                        if (incomingCount1 > 9 || incomingCount2 > 9)
+                        {
+                            if (nextPhase != currentPhase)
+                            {
+                                minorPhaseChange(0);
+                                yield return new WaitForSeconds(3);
+
+
+                            }
+
+
+                            nextPhase = 12;
+                            minorPhaseChange(nextPhase);
+                            currentPhase = nextPhase;
+                            yield return new WaitForSeconds(7);
+
+
+                        }
+
+                        //if there is no incoming wave of cars then continue as normal
+                        else
+                        {
+                            nextPhase = currentPhase;
+                            minorPhaseChange(nextPhase);
+                            currentPhase = nextPhase;
+                            yield return new WaitForSeconds(7);
+
+
+                        }
+
 
                     }
 
