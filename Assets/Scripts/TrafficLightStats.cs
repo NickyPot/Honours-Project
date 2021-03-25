@@ -183,7 +183,7 @@ public class TrafficLightStats : MonoBehaviour
             //print("Road 1: " + maxStreet1Count + "Road 2: " + maxStreet2Count + "Road 3: " + maxStreet3Count + "Road 4: " + maxStreet4Count);
 
 
-
+            //increase the street time count if there is at least one car there
             if (maxStreet1Count > 0 && trafficLight1.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street1TimeCount++;

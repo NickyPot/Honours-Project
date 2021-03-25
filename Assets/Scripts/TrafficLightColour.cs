@@ -107,6 +107,7 @@ public class TrafficLightColour : MonoBehaviour
 
         }
 
+        //only save traffic stats when the next phase is not the same
         if (currentPhase != nextPhase)
         {
             this.gameObject.GetComponent<TrafficLightStats>().saveData();
