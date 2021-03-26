@@ -322,3 +322,25 @@ SecondSide1, FifthSide2, 0.0361291, 31716, 2
 FourthSide1, FirstSide2, 0.02944545, 27886, 2
 FiftSide1, Road 2.5, 0.04270798, 27529, 2
 ThirdSide1, Road 2.5, 0.05059012, 13362, 0
+FiftSide1, Road 1.5, 0.05830049, 7641, 0
+SecondSide1, Road 2.5, 0.0591005, 7832, 0
+SixthSide1, Road 1.5, 0.03128095, 8666, 0
+SecondSide1, Road 2.5, 0.0591005, 8308, 0
+SixthSide1, Road 1.5, 0.0248458, 14466, 1
+FirstSide1, Road 2.5, 0.06170054, 11180, 0
+FourthSide1, Road 1.5, 0.02590161, 29330, 1
+ThirdSide1, Road 2.5, 0.02515685, 31485, 1
+Road 1.1, FirstSide2, 0.06345057, 12384, 0
+ThirdSide1, Road 2.5, 0.02876115, 28095, 1
+FiftSide1, Road 1.5, 0.01648714, 33682, 1
+FiftSide1, Road 1.5, 0.01916028, 28317, 1
+FiftSide1, Road 1.5, 0.02343383, 23157, 1
+SecondSide1, Road 2.5, 0.02231416, 24888, 1
+SecondSide1, Road 2.5, 0.03810716, 14175, 1
+FirstSide1, FourthSide2, 0.02770006, 38375, 2
+SecondSide1, Road 2.5, 0.0591005, 9125, 0
+FiftSide1, Road 1.5, 0.03465479, 15262, 0
+SixthSide1, Road 1.5, 0.009615322, 30884, 1
+SixthSide1, Road 1.5, 0.01462825, 19861, 1
+FirstSide1, SecondSide2, 0.01905748, 30845, 1
+FirstSide1, Road 2.5, 0.0276205, 21304, 1
