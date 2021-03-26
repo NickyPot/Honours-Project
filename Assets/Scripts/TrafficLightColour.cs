@@ -186,7 +186,7 @@ public class TrafficLightColour : MonoBehaviour
                     nextPhase = 12;
                     majorPhaseChange(nextPhase);
                     currentPhase = nextPhase;
-                    yield return new WaitForSeconds(7);
+                    yield return new WaitForSeconds(5);
 
 
 
@@ -210,7 +210,7 @@ public class TrafficLightColour : MonoBehaviour
                             nextPhase = 4;
                             majorPhaseChange(nextPhase);
                             currentPhase = nextPhase;
-                            yield return new WaitForSeconds(7);
+                            yield return new WaitForSeconds(5);
 
                             majorPhaseChange(0);
                             yield return new WaitForSeconds(3);
@@ -218,7 +218,7 @@ public class TrafficLightColour : MonoBehaviour
                             nextPhase = 3;
                             majorPhaseChange(nextPhase);
                             currentPhase = nextPhase;
-                            yield return new WaitForSeconds(7);
+                            yield return new WaitForSeconds(5);
 
 
 
@@ -236,7 +236,7 @@ public class TrafficLightColour : MonoBehaviour
                             nextPhase = 3;
                             majorPhaseChange(nextPhase);
                             currentPhase = nextPhase;
-                            yield return new WaitForSeconds(7);
+                            yield return new WaitForSeconds(5);
 
                         }
 
@@ -250,7 +250,7 @@ public class TrafficLightColour : MonoBehaviour
                             nextPhase = 4;
                             majorPhaseChange(nextPhase);
                             currentPhase = nextPhase;
-                            yield return new WaitForSeconds(7);
+                            yield return new WaitForSeconds(5);
 
                         }
 
@@ -277,7 +277,7 @@ public class TrafficLightColour : MonoBehaviour
                             nextPhase = 12;
                             majorPhaseChange(nextPhase);
                             currentPhase = nextPhase;
-                            yield return new WaitForSeconds(7);
+                            yield return new WaitForSeconds(5);
 
 
                         }
@@ -288,7 +288,7 @@ public class TrafficLightColour : MonoBehaviour
                             nextPhase = currentPhase;
                             majorPhaseChange(nextPhase);
                             currentPhase = nextPhase;
-                            yield return new WaitForSeconds(7);
+                            yield return new WaitForSeconds(5);
 
 
                         }
