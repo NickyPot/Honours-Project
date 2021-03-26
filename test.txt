@@ -306,3 +306,19 @@ FirstSide1, Road 1.5, 0.01962379, 51995, 4
 FirstSide1, Road 2.5, 0.01537381, 63439, 1
 FirstSide1, Road 2.5, 0.02338396, 45248, 1
 FirstSide1, Road 2.5, 0.03157971, 16179, 1
+FiftSide1, Road 1.5, 0.05830049, 8266, 0
+SixthSide1, Road 1.5, 0.04375027, 10841, 0
+FiftSide1, Road 1.5, 0.05830049, 7210, 0
+SecondSide1, Road 2.5, 0.0591005, 7458, 0
+SixthSide1, Road 1.5, 0.02855532, 8541, 1
+FirstSide1, Road 2.5, 0.03349348, 14547, 1
+SixthSide1, Road 1.5, 0.04375027, 5820, 0
+FirstSide1, Road 2.5, 0.04376087, 11298, 0
+Road 1.1, SecondSide2, 0.01486973, 32533, 1
+ThirdSide1, Road 2.5, 0.02027497, 30856, 1
+ThirdSide1, Road 2.5, 0.02424899, 26207, 1
+FourthSide1, Road 2.5, 0.02429941, 32037, 3
+SecondSide1, FifthSide2, 0.0361291, 31716, 2
+FourthSide1, FirstSide2, 0.02944545, 27886, 2
+FiftSide1, Road 2.5, 0.04270798, 27529, 2
+ThirdSide1, Road 2.5, 0.05059012, 13362, 0
