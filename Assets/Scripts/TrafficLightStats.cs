@@ -220,10 +220,8 @@ public class TrafficLightStats : MonoBehaviour
     //it is called when the phase changes
     public void saveData()
     {
-        TextWriter txtWriter = new StreamWriter("traffic_light_data.txt", true);
-        txtWriter.WriteLine("hello");
-        txtWriter.WriteLine(maxStreet1Count + ", " + maxStreet2Count + ", " + maxStreet3Count + ", " + maxStreet4Count);
-        txtWriter.WriteLine(street1TimeCount + ", " + street2TimeCount + ", " + street3TimeCount + ", " + street4TimeCount);
+        TextWriter txtWriter = new StreamWriter("traffic_light_data.csv", true);
+        txtWriter.WriteLine(this.gameObject.name + ", " + street1TimeCount + ", " + street2TimeCount + ", " + street3TimeCount + ", " + street4TimeCount + ", " + maxStreet1Count + ", " + maxStreet2Count + ", " + maxStreet3Count + ", " + maxStreet4Count);
 
         txtWriter.Close();
 

@@ -382,10 +382,10 @@ public class WaypointController : MonoBehaviour
 
     void writeData(string _startPointName, string _routeName, string _avgSpeed, string _timeOnRoad, string _stops)
     {
-        TextWriter txtWriter = new StreamWriter("test.txt", true);
+        TextWriter txtWriter = new StreamWriter("carstats.csv", true);
         txtWriter.WriteLine(_startPointName + ", " + _routeName + ", " + _avgSpeed + ", " + _timeOnRoad + ", " + _stops);
         txtWriter.Close();
-    
+
     }
 
     //this will stop the car if it comes across an activated control zone by a traffic light
