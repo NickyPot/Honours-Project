@@ -43,4 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea86b1dd0e1e0634cbd59e5d652eccd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeStartingPoints: []
   carPrefab: {fileID: 0}
+  carPrefOriginal: {fileID: 0}
+  poolingAmount: 30
+  carPool: []
+  possibleEndingPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
