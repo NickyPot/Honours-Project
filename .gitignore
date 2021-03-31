@@ -78,3 +78,5 @@ InitTestScene*.unity
 
 *.txt
 *.csv
+
+venv/

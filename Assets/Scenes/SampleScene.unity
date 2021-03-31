@@ -4534,6 +4534,8 @@ GameObject:
   - component: {fileID: 514146225}
   - component: {fileID: 514146226}
   - component: {fileID: 514146227}
+  - component: {fileID: 514146229}
+  - component: {fileID: 514146228}
   m_Layer: 0
   m_Name: MajorIntersection1
   m_TagString: Untagged
@@ -4601,9 +4603,64 @@ MonoBehaviour:
   intersectionSumCount: 0
   incomingTrafficCount1: 0
   incomingTrafficCount2: 0
+  street1TimeCount: 0
+  street2TimeCount: 0
+  street3TimeCount: 0
+  street4TimeCount: 0
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
+--- !u!114 &514146228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514146224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a705f32983c990c4eaab10702ad21092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  RedLight: {fileID: 0}
+  GreenLight: {fileID: 0}
+  street1Count: 0
+  street2Count: 0
+  street3Count: 0
+  street4Count: 0
+  currentPhase: 12
+  neighbourIntersection1: {fileID: 0}
+  neighbourIntersection2: {fileID: 0}
+--- !u!114 &514146229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514146224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 1
+    NumStackedVectorObservations: 1
+    VectorActionSize: 01000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 0
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: My Behavior
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
 --- !u!4 &534205645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8643934212974112539, guid: d5818ad0c79452946badaf4fa184a635,
@@ -9796,6 +9853,10 @@ MonoBehaviour:
   intersectionSumCount: 0
   incomingTrafficCount1: 0
   incomingTrafficCount2: 0
+  street1TimeCount: 0
+  street2TimeCount: 0
+  street3TimeCount: 0
+  street4TimeCount: 0
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
@@ -15935,6 +15996,10 @@ MonoBehaviour:
   intersectionSumCount: 0
   incomingTrafficCount1: 0
   incomingTrafficCount2: 0
+  street1TimeCount: 0
+  street2TimeCount: 0
+  street3TimeCount: 0
+  street4TimeCount: 0
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
@@ -16877,6 +16942,10 @@ MonoBehaviour:
   intersectionSumCount: 0
   incomingTrafficCount1: 0
   incomingTrafficCount2: 0
+  street1TimeCount: 0
+  street2TimeCount: 0
+  street3TimeCount: 0
+  street4TimeCount: 0
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0

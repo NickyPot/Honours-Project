@@ -22,11 +22,6 @@ public class FirstIntersection : Agent
     Transform trafficLight3;
     Transform trafficLight4;
 
-    //stores the detectors at each intersection
-    public GameObject detector1;
-    public GameObject detector2;
-    public GameObject detector3;
-    public GameObject detector4;
 
     //stores the count of cars in the vicinity of each traffic light
     public int street1Count;
@@ -78,28 +73,26 @@ public class FirstIntersection : Agent
     // Update is called once per frame
     void Update()
     {
-        street1Count = detector1.GetComponent<Detector>().count;
-        street2Count = detector2.GetComponent<Detector>().count;
-
-        if (detector3 != null)
-        {
-            street3Count = detector3.GetComponent<Detector>().count;
-        }
-
-        street4Count = detector4.GetComponent<Detector>().count;
-
+        street1Count = this.gameObject.GetComponent<TrafficLightStats>().street1Count;
+        street2Count = this.gameObject.GetComponent<TrafficLightStats>().street2Count;
+        street3Count = this.gameObject.GetComponent<TrafficLightStats>().street3Count;
+        street4Count = this.gameObject.GetComponent<TrafficLightStats>().street4Count;
 
         if (this.gameObject.name == "MajorIntersection1")
         {
-            incommingCount = neighbourIntersection1.GetComponent<TrafficLightColour>().street2Count;
 
-            neighbourPhase = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
+            incommingCount = this.gameObject.GetComponent<TrafficLightStats>().incomingTrafficCount2;
+
+            // neighbourPhase = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
 
         }
 
-        
+        stree3TimeCount = this.gameObject.GetComponent<TrafficLightStats>().street3TimeCount;
+        stree4TimeCount = this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount;
 
-    }
+
+
+}
     private void majorPhaseChange(int phaseNum)
     {
 
@@ -145,31 +138,7 @@ public class FirstIntersection : Agent
 
     }
     
-    
-    IEnumerator countCongested()
-    {
-        if (street3Count > 0 && trafficLight3.GetComponent<MeshRenderer>().material == RedLight)
-        {
-            stree3TimeCount++;
 
-        }
-        else
-        {
-            stree3TimeCount = 0;
-        }
-
-        if (street4Count > 0 && trafficLight4.GetComponent<MeshRenderer>().material == RedLight)
-        {
-            stree4TimeCount++;
-
-        }
-        else
-        {
-            stree4TimeCount = 0;
-        }
-        yield return new WaitForSeconds(1);
-    
-    }
       
 
     IEnumerator decidePhase()
@@ -199,6 +168,7 @@ public class FirstIntersection : Agent
             }
             
             //requests decision from rl, goes on to next step which also collects observations
+            //the manual collection of data (environment step) is done to avoid having too much data and too few decisions
             RequestDecision();
             Academy.Instance.EnvironmentStep();
             yield return new WaitForSeconds(5f);
@@ -211,7 +181,7 @@ public class FirstIntersection : Agent
     {
         GameObject[] cars = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject car in cars)
-            GameObject.Destroy(car);
+            car.SetActive(false);
         majorPhaseChange(1);
     }
     public override void CollectObservations(VectorSensor sensor)
@@ -221,7 +191,9 @@ public class FirstIntersection : Agent
         sensor.AddObservation(street3Count);
         sensor.AddObservation(street4Count);
         sensor.AddObservation(incommingCount);
-        sensor.AddObservation(neighbourPhase);
+        //i think i am removing the phase tracking because it doesn't really matter what
+        //phase the the neighbour is in
+        //sensor.AddObservation(neighbourPhase);
         sensor.AddObservation(stree3TimeCount);
         sensor.AddObservation(stree4TimeCount);
 
