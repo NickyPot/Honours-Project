@@ -24,15 +24,15 @@ public class FirstIntersection : Agent
 
 
     //stores the count of cars in the vicinity of each traffic light
-    public int street1Count;
-    public int street2Count;
-    public int street3Count;
-    public int street4Count;
+    [Range(0, 5)] public int street1Count;
+    [Range(0, 5)] public int street2Count;
+    [Range(0, 5)] public int street3Count;
+    [Range(0, 5)] public int street4Count;
 
     //used to indicate that cars on side roads have been waiting too long
     //used in countCongested()
-    private int stree3TimeCount = 0;
-    private int stree4TimeCount = 0;
+    [Range(0, 60)] private int stree3TimeCount = 0;
+    [Range(0, 60)] private int stree4TimeCount = 0;
 
     int incommingCount;
     int neighbourPhase;
