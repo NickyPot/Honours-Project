@@ -34,7 +34,7 @@ public class FirstIntersection : Agent
     [Range(0, 60)] private int stree3TimeCount = 0;
     [Range(0, 60)] private int stree4TimeCount = 0;
 
-    int incommingCount;
+    [Range(0, 15)] int incommingCount;
     int neighbourPhase;
 
     //stores the current and next phase of the traffic lights
