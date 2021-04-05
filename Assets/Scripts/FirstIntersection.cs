@@ -71,59 +71,116 @@ public class FirstIntersection : Agent
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        street1Count = this.gameObject.GetComponent<TrafficLightStats>().street1Count;
-        street2Count = this.gameObject.GetComponent<TrafficLightStats>().street2Count;
-        street3Count = this.gameObject.GetComponent<TrafficLightStats>().street3Count;
-        street4Count = this.gameObject.GetComponent<TrafficLightStats>().street4Count;
+        //dont go over max value set for normalisation
+        if (this.gameObject.GetComponent<TrafficLightStats>().street1Count <= 5)
+        {
+            street1Count = this.gameObject.GetComponent<TrafficLightStats>().street1Count;
+        }
+        else
+        {
+            street1Count = 5;
+        }
+
+        if (this.gameObject.GetComponent<TrafficLightStats>().street2Count <= 5)
+        {
+            street2Count = this.gameObject.GetComponent<TrafficLightStats>().street2Count;
+        }
+        else
+        {
+            street2Count = 5;
+        }
+
+        if (this.gameObject.GetComponent<TrafficLightStats>().street3Count <= 5)
+        {
+            street3Count = this.gameObject.GetComponent<TrafficLightStats>().street3Count;
+        }
+        else
+        {
+            street3Count = 5;
+        }
+
+        if (this.gameObject.GetComponent<TrafficLightStats>().street4Count <= 5)
+        {
+            street4Count = this.gameObject.GetComponent<TrafficLightStats>().street4Count;
+        }
+        else
+        {
+            street4Count = 5;
+        }
 
         if (this.gameObject.name == "MajorIntersection1")
         {
 
-            incommingCount = this.gameObject.GetComponent<TrafficLightStats>().incomingTrafficCount2;
+            if (this.gameObject.GetComponent<TrafficLightStats>().incomingTrafficCount2 <= 15)
+            {
+                incommingCount = this.gameObject.GetComponent<TrafficLightStats>().incomingTrafficCount2;
+            }
+            else
+            {
+                incommingCount = 15;
+            }
 
-            // neighbourPhase = neighbourIntersection1.GetComponent<TrafficLightColour>().currentPhase;
+            
 
         }
 
-        stree3TimeCount = this.gameObject.GetComponent<TrafficLightStats>().street3TimeCount;
-        stree4TimeCount = this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount;
+        if (this.gameObject.GetComponent<TrafficLightStats>().street3TimeCount <= 60)
+        {
+            stree3TimeCount = this.gameObject.GetComponent<TrafficLightStats>().street3TimeCount;
+        }
+        else
+        {
+            stree3TimeCount = 60;
+        }
+
+        if (this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount <= 60)
+        {
+            stree4TimeCount = this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount;
+        }
+        else
+        {
+            stree4TimeCount = 60;
+        }
 
 
-
-}
+    }
     private void majorPhaseChange(int phaseNum)
     {
 
         switch (phaseNum)
         {
 
-            case 1:
+            case 0:
                 //main road green light
                 trafficLight1.GetComponent<MeshRenderer>().material = GreenLight;
                 trafficLight2.GetComponent<MeshRenderer>().material = GreenLight;
                 trafficLight3.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight4.GetComponent<MeshRenderer>().material = RedLight;
+                this.gameObject.GetComponent<TrafficLightStats>().street1TimeCount = 0;
+                this.gameObject.GetComponent<TrafficLightStats>().street2TimeCount = 0;
                 break;
 
-            case 2:
+            case 1:
                 //side road 3 green light
                 trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight3.GetComponent<MeshRenderer>().material = GreenLight;
                 trafficLight4.GetComponent<MeshRenderer>().material = RedLight;
+                this.gameObject.GetComponent<TrafficLightStats>().street3TimeCount = 0;
                 break;
 
-            case 3:
+            case 2:
                 //side road 4 green light
                 trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight3.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight4.GetComponent<MeshRenderer>().material = GreenLight;
+                this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount = 0;
                 break;
 
-            case 0:
+            case 3:
                 //phase change delay, is used to give cars halfway across the intersection time to finish crossing
                 trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
@@ -149,6 +206,8 @@ public class FirstIntersection : Agent
             float tpStreet3 = findTimePenalty(stree3TimeCount);
             float tpStreet4 = findTimePenalty(stree4TimeCount);
 
+
+
             //set rewards for environment step
             float reward;
 
@@ -163,7 +222,7 @@ public class FirstIntersection : Agent
             }
             else
             {
-                reward = (float)(1 / (street1Count * 1.5 + street2Count * 1.5 + street3Count * tpStreet3 + street4Count * tpStreet4));
+                reward = (float)(1 / (1 + street1Count * 1.5 + street2Count * 1.5 + street3Count * tpStreet3 + street4Count * tpStreet4));
                 SetReward(reward);
             }
             
@@ -171,6 +230,17 @@ public class FirstIntersection : Agent
             //the manual collection of data (environment step) is done to avoid having too much data and too few decisions
             RequestDecision();
             Academy.Instance.EnvironmentStep();
+
+            if (currentPhase != nextPhase)
+            {
+                majorPhaseChange(3);
+                yield return new WaitForSeconds(3);
+            
+            }
+
+            majorPhaseChange(nextPhase);
+            currentPhase = nextPhase;
+
             yield return new WaitForSeconds(5f);
             
         }
@@ -182,27 +252,43 @@ public class FirstIntersection : Agent
         GameObject[] cars = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject car in cars)
             car.SetActive(false);
+        this.gameObject.GetComponent<TrafficLightStats>().street3TimeCount = 0;
+        this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount = 0;
+
         majorPhaseChange(1);
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(street1Count);
-        sensor.AddObservation(street2Count);
-        sensor.AddObservation(street3Count);
-        sensor.AddObservation(street4Count);
-        sensor.AddObservation(incommingCount);
+        sensor.AddObservation(normalize(street1Count, 0, 5));
+        sensor.AddObservation(normalize(street2Count, 0, 5));
+        sensor.AddObservation(normalize(street3Count, 0, 5));
+        sensor.AddObservation(normalize(street4Count, 0, 5));
+        sensor.AddObservation(normalize(incommingCount, 0 ,15));
         //i think i am removing the phase tracking because it doesn't really matter what
         //phase the the neighbour is in
         //sensor.AddObservation(neighbourPhase);
-        sensor.AddObservation(stree3TimeCount);
-        sensor.AddObservation(stree4TimeCount);
+        sensor.AddObservation(normalize(stree3TimeCount, 0, 60));
+        sensor.AddObservation(normalize(stree4TimeCount, 0, 60));
 
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        nextPhase = actions.DiscreteActions[0];    
+        nextPhase = actions.DiscreteActions[0];
+        print(nextPhase);
+        
     
+    }
+
+    //used to normalise observations
+    //gives faster and more stable training
+    private int normalize(int _currentValue, int _minValue, int _maxValue)
+    {
+        int _normalisedValue;
+
+        _normalisedValue = (_currentValue - _minValue) / (_maxValue - _minValue);
+
+        return _normalisedValue;
     }
 
     //this figures out the time penatly based on the wait time on the side roads
@@ -234,12 +320,11 @@ public class FirstIntersection : Agent
 
         }
 
-        if (streetTimeCount > 60)
+        if (streetTimeCount >= 60)
         {
             timePenalty = -1f;
 
         }
-
 
 
         return timePenalty;
