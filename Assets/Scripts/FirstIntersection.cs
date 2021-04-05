@@ -213,7 +213,7 @@ public class FirstIntersection : Agent
 
             /*if the cars on any of the side streets have been waiting for longer than a minute
              then -1f reward and reset episode, otherwise continue with assigned reward*/
-            if (tpStreet3 == -1f || tpStreet4 == -1f)
+            if (tpStreet3 == -1f || tpStreet4 == -1f || street1Count >=4 || street2Count >= 4)
             {
                 reward = -1f;
                 SetReward(reward);
@@ -224,6 +224,7 @@ public class FirstIntersection : Agent
             {
                 reward = (float)(1 / (1 + street1Count * 1.5 + street2Count * 1.5 + street3Count * tpStreet3 + street4Count * tpStreet4));
                 SetReward(reward);
+                print("reward: " + reward);
             }
             
             //requests decision from rl, goes on to next step which also collects observations

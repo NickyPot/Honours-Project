@@ -2,17 +2,17 @@
     "Inter1": {
         "checkpoints": [
             {
-                "steps": 114,
-                "file_path": "results\\ppo\\Inter1\\Inter1-114.onnx",
-                "reward": 5.367709398269653,
-                "creation_time": 1617635337.9781082
+                "steps": 361,
+                "file_path": "results\\ppo\\Inter1\\Inter1-361.onnx",
+                "reward": 2.2929244989698585,
+                "creation_time": 1617645011.8745139
             }
         ],
         "final_checkpoint": {
-            "steps": 114,
+            "steps": 361,
             "file_path": "results\\ppo\\Inter1.onnx",
-            "reward": 5.367709398269653,
-            "creation_time": 1617635337.9781082
+            "reward": 2.2929244989698585,
+            "creation_time": 1617645011.8745139
         }
     },
     "metadata": {
