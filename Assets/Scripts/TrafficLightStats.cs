@@ -41,10 +41,10 @@ public class TrafficLightStats : MonoBehaviour
     public int incomingTrafficCount2;
 
     //these are used to indicate the maximum amount of cars that have waited at red light in a phase
-    private int maxStreet1Count = 0;
-    private int maxStreet2Count = 0;
-    private int maxStreet3Count = 0;
-    private int maxStreet4Count = 0;
+    public int maxStreet1Count = 0;
+    public int maxStreet2Count = 0;
+    public int maxStreet3Count = 0;
+    public int maxStreet4Count = 0;
 
     //used to indicate that cars on side roads have been waiting too long
     //used in countCongested()
@@ -79,7 +79,7 @@ public class TrafficLightStats : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //get the street counts of the present intersection
         street1Count = detector1.GetComponent<Detector>().count;
@@ -184,26 +184,26 @@ public class TrafficLightStats : MonoBehaviour
 
 
             //increase the street time count if there is at least one car there
-            if (maxStreet1Count > 0 && trafficLight1.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
+            if (street1Count > 0 && trafficLight1.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street1TimeCount++;
 
             }
 
-            if (maxStreet2Count > 0 && trafficLight2.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
+            if (street2Count > 0 && trafficLight2.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street2TimeCount++;
 
             }
 
-            if (maxStreet3Count > 0 && trafficLight3.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
+            if (street3Count > 0 && trafficLight3.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street3TimeCount++;
 
             }
 
 
-            if (maxStreet4Count > 0 && trafficLight4.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
+            if (street4Count > 0 && trafficLight4.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
             {
                 street4TimeCount++;
 
