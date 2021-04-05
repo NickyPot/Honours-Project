@@ -80,3 +80,6 @@ InitTestScene*.unity
 *.csv
 
 venv/
+
+results/
+results/ppo/run_logs/timers.json
