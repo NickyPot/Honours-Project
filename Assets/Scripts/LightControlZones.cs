@@ -24,7 +24,7 @@ public class LightControlZones : MonoBehaviour
 
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (trafficLight.GetComponent<MeshRenderer>().material.name.Contains("RedLigh"))
         {

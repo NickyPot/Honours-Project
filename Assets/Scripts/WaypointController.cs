@@ -82,7 +82,7 @@ public class WaypointController : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //get what speed the vehicle should be moveing at
         movementSpeed = getSpeed(movementSpeed, acceleration);
@@ -288,7 +288,7 @@ public class WaypointController : MonoBehaviour
                 //ie you have only finished the part of the route and not the overall route
                 if (possibleEndingPoints.Contains(currentRoute.transform.GetChild(index).gameObject))
                 {
-                    print(currentRoute.transform.GetChild(index).gameObject.name);
+                    //print(currentRoute.transform.GetChild(index).gameObject.name);
                     //stops the timer and logs the time the car was on the road
                     //TODO: logs on console, switch to csv file
                     stopwatch.Stop();
