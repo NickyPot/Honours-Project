@@ -5,6 +5,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using Unity.MLAgents;
 
 public class WaypointController : MonoBehaviour
 {
@@ -40,12 +41,14 @@ public class WaypointController : MonoBehaviour
     public int timesStopedAtLight;
     public bool stoppedAtLight;
     bool recordedState;
+
+    StatsRecorder statsRec;
     
 
     // Start is called before the first frame update
     void Start()
     {
-
+        statsRec = Academy.Instance.StatsRecorder;
 
     }
 
@@ -299,6 +302,9 @@ public class WaypointController : MonoBehaviour
                     calcAvgSpeed();
 
                     writeData(startPoint.transform.parent.name, currentRoute.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString(), timesStopedAtLight.ToString());
+
+                    statsRec.Add("avg speed", avgSpeed);
+                    statsRec.Add("times stopped", timesStopedAtLight);
 
 
                     //deactivate vehicle to be returned to object pool

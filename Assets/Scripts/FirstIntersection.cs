@@ -45,6 +45,8 @@ public class FirstIntersection : Agent
     public GameObject neighbourIntersection1;
     public GameObject neighbourIntersection2;
 
+    StatsRecorder statRec;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +65,7 @@ public class FirstIntersection : Agent
 
         trafficLight4 = this.transform.Find("TrafficLight4").Find("Light");
 
-
+        statRec = Academy.Instance.StatsRecorder;
 
         StartCoroutine(decidePhase());
 
@@ -77,6 +79,7 @@ public class FirstIntersection : Agent
         if (this.gameObject.GetComponent<TrafficLightStats>().street1Count <= 5)
         {
             street1Count = this.gameObject.GetComponent<TrafficLightStats>().street1Count;
+
         }
         else
         {
@@ -143,6 +146,14 @@ public class FirstIntersection : Agent
         {
             stree4TimeCount = 60;
         }
+
+        //this ads the stats to tensorboard
+        statRec.Add("street 1 count", street1Count);
+        statRec.Add("street 2 count", street2Count);
+        statRec.Add("street 3 count", street3Count);
+        statRec.Add("street 4 count", street4Count);
+        statRec.Add("street 3 time", street3Count);
+        statRec.Add("street 4 time", street4Count);
 
 
     }
