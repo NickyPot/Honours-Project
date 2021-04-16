@@ -315,8 +315,8 @@ public class FirstIntersection : Agent
 
 
             }
-            
 
+            this.gameObject.GetComponent<TrafficLightStats>().saveData();
             yield return new WaitForSeconds(5f);
             
         }

@@ -250,6 +250,7 @@ public class MinorIntersectionAgent : Agent
 
             }
 
+            this.gameObject.GetComponent<TrafficLightStats>().saveData();
 
             yield return new WaitForSeconds(5f);
 
