@@ -4,8 +4,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
-
-
+using System;
 
 public class FirstIntersection : Agent
 {
@@ -17,10 +16,10 @@ public class FirstIntersection : Agent
 
     //stores the traffic light transforms
     //used to get and set the light of the traffic lights
-    Transform trafficLight1;
-    Transform trafficLight2;
-    Transform trafficLight3;
-    Transform trafficLight4;
+    public Transform trafficLight1;
+    public Transform trafficLight2;
+    public Transform trafficLight3;
+    public Transform trafficLight4;
 
 
     //stores the count of cars in the vicinity of each traffic light
@@ -52,18 +51,7 @@ public class FirstIntersection : Agent
     {
         Academy.Instance.AutomaticSteppingEnabled = false;
 
-        trafficLight1 = this.transform.Find("TrafficLight1").Find("Light");
-        trafficLight2 = this.transform.Find("TrafficLight2").Find("Light");
 
-        //traffic light 3 does not exist in all intersections
-        //so we need to check if it exists first
-        if (this.transform.Find("TrafficLight3") != null)
-        {
-            trafficLight3 = this.transform.Find("TrafficLight3").Find("Light");
-
-        }
-
-        trafficLight4 = this.transform.Find("TrafficLight4").Find("Light");
 
         statRec = Academy.Instance.StatsRecorder;
 
@@ -73,7 +61,7 @@ public class FirstIntersection : Agent
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //dont go over max value set for normalisation
         if (this.gameObject.GetComponent<TrafficLightStats>().street1Count <= 5)
@@ -213,45 +201,121 @@ public class FirstIntersection : Agent
     {
         while (true)
         {
-            //find time penalty
-            float tpStreet3 = findTimePenalty(stree3TimeCount);
-            float tpStreet4 = findTimePenalty(stree4TimeCount);
 
-
-
-            //set rewards for environment step
-            float reward;
-
-            /*if the cars on any of the side streets have been waiting for longer than a minute
-             then -1f reward and reset episode, otherwise continue with assigned reward*/
-            if (tpStreet3 == -1f || tpStreet4 == -1f || street1Count >=4 || street2Count >= 4)
-            {
-                reward = -1f;
-                SetReward(reward);
-                EndEpisode();
-
-            }
-            else
-            {
-                reward = (float)(1 / (1 + street1Count * 1.5 + street2Count * 1.5 + street3Count * tpStreet3 + street4Count * tpStreet4));
-                SetReward(reward);
-                print("reward: " + reward);
-            }
-            
             //requests decision from rl, goes on to next step which also collects observations
             //the manual collection of data (environment step) is done to avoid having too much data and too few decisions
-            RequestDecision();
             Academy.Instance.EnvironmentStep();
 
             if (currentPhase != nextPhase)
             {
                 majorPhaseChange(3);
                 yield return new WaitForSeconds(3);
-            
+
             }
 
             majorPhaseChange(nextPhase);
             currentPhase = nextPhase;
+
+
+            //find time penalty
+            float tpStreet3 = findTimePenalty(stree3TimeCount);
+            float tpStreet4 = findTimePenalty(stree4TimeCount);
+
+
+
+
+
+            /*if the cars on any of the side streets have been waiting for longer than a minute
+             then -1f reward and reset episode, otherwise continue with assigned reward*/
+            if (street1Count >=5 || street2Count >= 5 || tpStreet3 == -1f|| tpStreet4 == -1f )
+            {
+                //set rewards for environment step
+                float reward;
+                reward = -1f;
+                SetReward(reward);
+                //EndEpisode();
+
+            }
+
+            else if(street1Count > 0 || street2Count > 0 || street3Count > 0 || street4Count > 0)
+            {
+                //main road has green
+                if (currentPhase == 0)
+                {
+                    //set rewards for environment step
+                    float reward;
+                    //find which side road has the most cars
+                    int maxNumWaiting;
+                    float maxTimeWaitingPenalty;
+                    if (street3Count > street4Count)
+                    {
+                        maxNumWaiting = street3Count;
+                        maxTimeWaitingPenalty = tpStreet3;
+                    }
+                    else
+                    {
+                        maxNumWaiting = street4Count;
+                        maxTimeWaitingPenalty = tpStreet4;
+                    }
+
+                    reward = (float)1f - (normalize(maxNumWaiting, 0, 5) * maxTimeWaitingPenalty);                   
+                    print("reward: " + reward + " maxWai: " + maxNumWaiting + " timewait: " + maxTimeWaitingPenalty);
+                    SetReward(reward);
+
+                }
+
+                //side road 3 has green
+                else if (currentPhase == 1)
+                {
+                    //if the main road has more cars then give -1 reward (prioritising main road flow)
+                    if (street1Count > street3Count || street2Count > street3Count)
+                    {
+                        print("reward: " + "-1f");
+                        SetReward(-1f);
+                    }
+
+                    else
+                    {
+                        //set rewards for environment step
+                        float reward;
+                        reward = (float)1 - (float)incommingCount / 10;
+                        print("reward: " + reward + " inc: " + incommingCount);
+                        SetReward(reward);
+
+                    }
+
+                }
+
+                //road 4 has green
+                else if (currentPhase == 2)
+                {
+                    //if the main road has more cars then give -1 reward (prioritising main road flow)
+                    if (street1Count > street4Count || street2Count > street4Count)
+                    {
+                        print("reward: " + "-1f");
+                        SetReward(-1f);
+
+                    }
+
+                    else
+                    {
+                        //set rewards for environment step
+                        float reward;
+                        reward = (float)1 - (float)incommingCount / 10;
+                        print("reward: " + reward + " inc: " + incommingCount);
+                        SetReward(reward);
+
+                    }
+
+                }
+
+
+                //reward = (float)(1 / (1 + street1Count * 1.5 + street2Count * 1.5 + street3Count * tpStreet3 + street4Count * tpStreet4));
+                //reward = (float)(Math.Truncate((double)reward * 1000.0) / 1000.0);
+
+
+            }
+            
 
             yield return new WaitForSeconds(5f);
             
@@ -287,18 +351,18 @@ public class FirstIntersection : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         nextPhase = actions.DiscreteActions[0];
-        print(nextPhase);
+        //print(nextPhase);
         
     
     }
 
     //used to normalise observations
     //gives faster and more stable training
-    private int normalize(int _currentValue, int _minValue, int _maxValue)
+    private float normalize(int _currentValue, int _minValue, int _maxValue)
     {
-        int _normalisedValue;
+        float _normalisedValue;
 
-        _normalisedValue = (_currentValue - _minValue) / (_maxValue - _minValue);
+        _normalisedValue = (float)(_currentValue - _minValue) / (_maxValue - _minValue);
 
         return _normalisedValue;
     }
@@ -309,7 +373,7 @@ public class FirstIntersection : Agent
         float timePenalty = 0f;
         if (streetTimeCount < 15)
         {
-            timePenalty = 0f;
+            timePenalty = 0.25f;
         
         }
 
@@ -322,13 +386,13 @@ public class FirstIntersection : Agent
 
         if (streetTimeCount >= 30 && streetTimeCount < 45)
         {
-            timePenalty = 1f;
+            timePenalty = 0.75f;
 
         }
 
         if (streetTimeCount >= 45 && streetTimeCount < 60)
         {
-            timePenalty = 1.5f;
+            timePenalty = 1f;
 
         }
 
