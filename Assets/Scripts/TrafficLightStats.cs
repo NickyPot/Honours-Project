@@ -95,7 +95,7 @@ public class TrafficLightStats : MonoBehaviour
         //get the present intersection car amount
         intersectionSumCount = street1Count + street2Count + street3Count + street4Count;
 
-        currentPhase = this.gameObject.GetComponent<TrafficLightColour>().currentPhase;
+        //currentPhase = this.gameObject.GetComponent<FirstIntersection>().currentPhase;
 
         //if there is a neighbour intersection 1 and/or 2, then get their current phase
         //this, along with incoming car amount is used to predict if there is going to be a wave of cars coming
