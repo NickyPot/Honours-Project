@@ -85,7 +85,7 @@ public class WaypointController : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //get what speed the vehicle should be moveing at
         movementSpeed = getSpeed(movementSpeed, acceleration);
