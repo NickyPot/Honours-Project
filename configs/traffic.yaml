@@ -1,5 +1,5 @@
 behaviors:
-  hello:
+  Inter4:
     trainer_type: sac
     hyperparameters:
       batch_size: 10
@@ -25,5 +25,5 @@ behaviors:
     keep_checkpoints: 5
     max_steps: 500000
     time_horizon: 1000
-    summary_freq: 64
+    summary_freq: 1
     threaded: true
