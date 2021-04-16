@@ -3060,8 +3060,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388630321}
   m_LocalRotation: {x: -0, y: 0.22245961, z: -0, w: 0.97494197}
-  m_LocalPosition: {x: 34.07, y: -1.1834064, z: 59.82}
-  m_LocalScale: {x: 9.199999, y: 1, z: 1}
+  m_LocalPosition: {x: 35.96, y: -1.1834064, z: 59.15}
+  m_LocalScale: {x: 12.5515585, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 217417442}
   m_RootOrder: 0
@@ -4536,6 +4536,7 @@ GameObject:
   - component: {fileID: 514146227}
   - component: {fileID: 514146229}
   - component: {fileID: 514146228}
+  - component: {fileID: 514146230}
   m_Layer: 0
   m_Name: MajorIntersection1
   m_TagString: Untagged
@@ -4632,6 +4633,10 @@ MonoBehaviour:
   MaxStep: 0
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
+  trafficLight1: {fileID: 970104590}
+  trafficLight2: {fileID: 390110}
+  trafficLight3: {fileID: 1212733949}
+  trafficLight4: {fileID: 603545396}
   street1Count: 0
   street2Count: 0
   street3Count: 0
@@ -4657,14 +4662,28 @@ MonoBehaviour:
     VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 553d5b1f975393a45ad94c1e4ac91686, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: Inter1
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
+--- !u!114 &514146230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514146224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 1
+  TakeActionsBetweenDecisions: 1
 --- !u!4 &534205645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8643934212974112539, guid: d5818ad0c79452946badaf4fa184a635,
@@ -6658,8 +6677,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723786665}
   m_LocalRotation: {x: -0, y: 0.9315265, z: -0, w: 0.36367363}
-  m_LocalPosition: {x: 56.15, y: -1.1834064, z: 106.39}
-  m_LocalScale: {x: 9.2, y: 1, z: 1}
+  m_LocalPosition: {x: 56.67, y: -1.1834064, z: 107.07}
+  m_LocalScale: {x: 11.15132, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935238670}
   m_RootOrder: 3
@@ -8322,8 +8341,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937774247}
   m_LocalRotation: {x: -0, y: 0.80098873, z: -0, w: 0.5986794}
-  m_LocalPosition: {x: 29.8, y: -1.1834064, z: 73.54}
-  m_LocalScale: {x: 9.199999, y: 1, z: 1}
+  m_LocalPosition: {x: 30.4, y: -1.1834064, z: 76.33}
+  m_LocalScale: {x: 14.267466, y: 2.0533, z: 1}
   m_Children: []
   m_Father: {fileID: 217417442}
   m_RootOrder: 2
@@ -9791,6 +9810,9 @@ GameObject:
   - component: {fileID: 1126122795}
   - component: {fileID: 1126122796}
   - component: {fileID: 1126122797}
+  - component: {fileID: 1126122800}
+  - component: {fileID: 1126122799}
+  - component: {fileID: 1126122798}
   m_Layer: 0
   m_Name: MinorIntersection3
   m_TagString: Untagged
@@ -9822,7 +9844,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126122794}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
@@ -9868,6 +9890,71 @@ MonoBehaviour:
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
+--- !u!114 &1126122798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126122794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 1
+  TakeActionsBetweenDecisions: 1
+--- !u!114 &1126122799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126122794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069a893138173ff4d93420d31065f248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
+  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
+  trafficLight1: {fileID: 485910924}
+  trafficLight2: {fileID: 1171826328}
+  trafficLight4: {fileID: 2091072891}
+  street1Count: 0
+  street2Count: 0
+  street4Count: 0
+  currentPhase: 1
+--- !u!114 &1126122800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126122794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 6
+    NumStackedVectorObservations: 1
+    VectorActionSize: 02000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 0
+  m_Model: {fileID: 5022602860645237092, guid: 387b1c03d4515d44f86d1dbd0cccd3f9, type: 3}
+  m_InferenceDevice: 0
+  m_BehaviorType: 2
+  m_BehaviorName: Inter4
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
 --- !u!1 &1134551328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 182628, guid: b902c7d22d14fa843846ba35e963190b,
@@ -15937,6 +16024,9 @@ GameObject:
   - component: {fileID: 1742888623}
   - component: {fileID: 1742888624}
   - component: {fileID: 1742888625}
+  - component: {fileID: 1742888628}
+  - component: {fileID: 1742888627}
+  - component: {fileID: 1742888626}
   m_Layer: 0
   m_Name: MajorIntersection4
   m_TagString: Untagged
@@ -15969,7 +16059,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742888622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
@@ -15993,10 +16083,10 @@ MonoBehaviour:
   detector2: {fileID: 723786665}
   detector3: {fileID: 1670671714}
   detector4: {fileID: 981255955}
-  neighbourIntersection1: {fileID: 1126122794}
-  neighbourIntersection2: {fileID: 0}
-  irrelevantDetector1: {fileID: 937774247}
-  irrelevantDetector2: {fileID: 0}
+  neighbourIntersection1: {fileID: 0}
+  neighbourIntersection2: {fileID: 1126122794}
+  irrelevantDetector1: {fileID: 0}
+  irrelevantDetector2: {fileID: 937774247}
   street1Count: 0
   street2Count: 0
   street3Count: 0
@@ -16015,6 +16105,75 @@ MonoBehaviour:
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
+--- !u!114 &1742888626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742888622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 1
+  TakeActionsBetweenDecisions: 1
+--- !u!114 &1742888627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742888622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a705f32983c990c4eaab10702ad21092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
+  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
+  trafficLight1: {fileID: 1714596380}
+  trafficLight2: {fileID: 163645288}
+  trafficLight3: {fileID: 1546341564}
+  trafficLight4: {fileID: 1760505516}
+  street1Count: 0
+  street2Count: 0
+  street3Count: 0
+  street4Count: 0
+  currentPhase: 12
+  neighbourIntersection1: {fileID: 0}
+  neighbourIntersection2: {fileID: 0}
+--- !u!114 &1742888628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742888622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 7
+    NumStackedVectorObservations: 1
+    VectorActionSize: 03000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 0
+  m_Model: {fileID: 5022602860645237092, guid: a191b402a2b144846bccbe8f938c9b97, type: 3}
+  m_InferenceDevice: 0
+  m_BehaviorType: 2
+  m_BehaviorName: Inter2
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
 --- !u!4 &1748288141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8301888787845796474, guid: e936d1264c8c0344388a116253472bb1,
@@ -16888,6 +17047,9 @@ GameObject:
   - component: {fileID: 1939624357}
   - component: {fileID: 1939624358}
   - component: {fileID: 1939624359}
+  - component: {fileID: 1939624361}
+  - component: {fileID: 1939624360}
+  - component: {fileID: 1939624362}
   m_Layer: 0
   m_Name: MinorIntersection2
   m_TagString: Untagged
@@ -16919,7 +17081,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939624356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
@@ -16965,6 +17127,71 @@ MonoBehaviour:
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
+--- !u!114 &1939624360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939624356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069a893138173ff4d93420d31065f248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
+  GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
+  trafficLight1: {fileID: 1263502698}
+  trafficLight2: {fileID: 514623}
+  trafficLight4: {fileID: 1022543889}
+  street1Count: 0
+  street2Count: 0
+  street4Count: 0
+  currentPhase: 1
+--- !u!114 &1939624361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939624356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 6
+    NumStackedVectorObservations: 1
+    VectorActionSize: 02000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 0
+  m_Model: {fileID: 5022602860645237092, guid: 5058dcb8a1b0f38478eaefd5e2321991, type: 3}
+  m_InferenceDevice: 0
+  m_BehaviorType: 2
+  m_BehaviorName: Inter3
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
+--- !u!114 &1939624362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939624356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 1
+  TakeActionsBetweenDecisions: 1
 --- !u!4 &1963057348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5004291603844284698, guid: 4f755df29b7f3c94ead457a8e60e5147,
