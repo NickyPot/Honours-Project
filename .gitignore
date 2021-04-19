@@ -77,3 +77,5 @@ InitTestScene*.unity
 
 
 *.txt
+carstats.csv
+traffic_light_data.csv
