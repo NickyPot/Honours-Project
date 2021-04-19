@@ -14,7 +14,7 @@ public class WaypointController : MonoBehaviour
    // public Transform startingPoint;
     public List<GameObject> possibleEndingPoints;
     public Transform endPoint;
-    private Transform startPoint;
+    public Transform startPoint;
 
 
 
@@ -56,7 +56,7 @@ public class WaypointController : MonoBehaviour
          * the vehicle object gets activated out of the pool 
          */
         movementSpeed = 0f;
-        acceleration = 0.0001f;
+        acceleration = 0.001f;
         targetWaypoint = null;
         endPoint = null;
         loggedSpeeds = null;
@@ -82,7 +82,7 @@ public class WaypointController : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //get what speed the vehicle should be moveing at
         movementSpeed = getSpeed(movementSpeed, acceleration);
@@ -342,7 +342,7 @@ public class WaypointController : MonoBehaviour
         
         bool _carInFront = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2);
 
-        if (_movementSpeed <= 0.4f)
+        if (_movementSpeed <= 0.13f)
         {
             //increase the vehicle speed if it has not reached top speed
             _movementSpeed += _acceleration;
