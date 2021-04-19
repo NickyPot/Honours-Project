@@ -6,7 +6,7 @@ using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using System;
 
-public class FirstIntersection : Agent
+public class MajorIntersectionAgent : Agent
 {
 
     //stores the materials for red and green
@@ -50,6 +50,7 @@ public class FirstIntersection : Agent
     void Start()
     {
         Academy.Instance.AutomaticSteppingEnabled = false;
+
 
 
 

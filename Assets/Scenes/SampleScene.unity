@@ -731,6 +731,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.5, y: 2.625, z: 5}
   m_Center: {x: -3.75, y: -1.1875, z: -2.5}
+--- !u!4 &150215006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 1797911569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &151158030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4962080578245912489, guid: 457c128f7e5797b408d0060ce6598ffd,
@@ -2697,6 +2703,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 354682033}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &365077539 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 1591078013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &384695466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1482906858395378529, guid: 5cdd59d2fa8f7fd48ad9787a09da2e21,
@@ -4169,10 +4181,10 @@ MonoBehaviour:
   MaxStep: 0
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLight1: {fileID: 0}
-  trafficLight2: {fileID: 0}
-  trafficLight3: {fileID: 0}
-  trafficLight4: {fileID: 0}
+  trafficLight1: {fileID: 1326500606}
+  trafficLight2: {fileID: 1091519086}
+  trafficLight3: {fileID: 799883842}
+  trafficLight4: {fileID: 1848474612}
   street1Count: 0
   street2Count: 0
   street3Count: 0
@@ -4231,6 +4243,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5543538789171400886, guid: ddf5817f617beb646a7de05d50ad8248,
     type: 3}
   m_PrefabInstance: {fileID: 5543538788618727563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &556850891 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 2102438054}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &579333763 stripped
 Transform:
@@ -5768,6 +5786,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9124750932464425629}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &799883842 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 92564914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &800102687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8585421368793156816, guid: 481407ecc4ba98543995ecb21b11b7d2,
@@ -6304,6 +6328,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5013919228636393536, guid: ee16918fd136bbf409cf1c12e53e0dc5,
     type: 3}
   m_PrefabInstance: {fileID: 5013919227894923224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &880891436 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 229383473}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &890571162
 GameObject:
@@ -7653,6 +7683,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981255955}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &988289106 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 1096367850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &994894776 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 182628, guid: b902c7d22d14fa843846ba35e963190b,
@@ -8113,6 +8149,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1057611838}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1058005262 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 1130644604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1059943069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6256039652088472917, guid: 779bf69e212c3e14ca0c2fd82c081058,
@@ -8323,6 +8365,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1090475542}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1091519086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 484124331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1096367850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8526,9 +8574,9 @@ MonoBehaviour:
   MaxStep: 0
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLight1: {fileID: 0}
-  trafficLight2: {fileID: 0}
-  trafficLight4: {fileID: 0}
+  trafficLight1: {fileID: 1495642757}
+  trafficLight2: {fileID: 1721534590}
+  trafficLight4: {fileID: 880891436}
   street1Count: 0
   street2Count: 0
   street4Count: 0
@@ -10869,6 +10917,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1326257137}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1326500606 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 894065758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1341521549
 GameObject:
   m_ObjectHideFlags: 0
@@ -11987,6 +12041,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490762172}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1495642757 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 1248251934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1503872921
 GameObject:
   m_ObjectHideFlags: 0
@@ -13463,6 +13523,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7921116210433296593}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1721534590 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 473372430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1722003320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14122,10 +14188,10 @@ MonoBehaviour:
   MaxStep: 0
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLight1: {fileID: 0}
-  trafficLight2: {fileID: 0}
-  trafficLight3: {fileID: 0}
-  trafficLight4: {fileID: 0}
+  trafficLight1: {fileID: 365077539}
+  trafficLight2: {fileID: 556850891}
+  trafficLight3: {fileID: 1058005262}
+  trafficLight4: {fileID: 1891087679}
   street1Count: 0
   street2Count: 0
   street3Count: 0
@@ -14164,6 +14230,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8301888787845796474, guid: e936d1264c8c0344388a116253472bb1,
     type: 3}
   m_PrefabInstance: {fileID: 8301888789591888119}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1761408556 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 283065184}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1780385666 stripped
 Transform:
@@ -14426,6 +14498,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844238964}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1848474612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 476372815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1856690992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 11738502778014692, guid: 1f878c50d5b38fc459265f7415e78569,
@@ -14616,6 +14694,12 @@ Transform:
   m_Father: {fileID: 1373182857}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1891087679 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452106935966133466, guid: cf35c38d93c94f542b58ddc6b9a5a907,
+    type: 3}
+  m_PrefabInstance: {fileID: 1536909061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1895940593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2337691723091996666, guid: c4af752b7f2b97a4499a879f20363095,
@@ -14974,9 +15058,9 @@ MonoBehaviour:
   MaxStep: 0
   RedLight: {fileID: 2100000, guid: 13deb975c01cdda42932fe926d695f85, type: 2}
   GreenLight: {fileID: 2100000, guid: 20e58a99388ff334eafe4514968c44f2, type: 2}
-  trafficLight1: {fileID: 0}
-  trafficLight2: {fileID: 0}
-  trafficLight4: {fileID: 0}
+  trafficLight1: {fileID: 988289106}
+  trafficLight2: {fileID: 150215006}
+  trafficLight4: {fileID: 1761408556}
   street1Count: 0
   street2Count: 0
   street4Count: 0
