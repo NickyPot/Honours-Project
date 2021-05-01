@@ -48,10 +48,10 @@ public class TrafficLightStats : MonoBehaviour
 
     //used to indicate that cars on side roads have been waiting too long
     //used in countCongested()
-    private int street1TimeCount = 0;
-    private int street2TimeCount = 0;
-    private int street3TimeCount = 0;
-    private int street4TimeCount = 0;
+    public int street1TimeCount = 0;
+    public int street2TimeCount = 0;
+    public int street3TimeCount = 0;
+    public int street4TimeCount = 0;
 
     public int currentPhase;
     public int neighbourPhase1;

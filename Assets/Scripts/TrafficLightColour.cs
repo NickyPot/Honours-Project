@@ -176,9 +176,42 @@ public class TrafficLightColour : MonoBehaviour
 
             if (this.transform.gameObject.name.Contains("Major"))
             {
+                //if the cars on 3 have been waiting for at least a minute then give them green
+                if (this.gameObject.GetComponent<TrafficLightStats>().street3TimeCount >= 60)
+                {
+                    if (nextPhase != currentPhase)
+                    {
+                        majorPhaseChange(0);
+                        yield return new WaitForSeconds(3);
+
+                    }
+
+                    nextPhase = 3;
+                    majorPhaseChange(nextPhase);
+                    currentPhase = nextPhase;
+                    yield return new WaitForSeconds(5);
+
+                }
+
+                //if the cars on 4 have been waiting for at least a minute then give them green
+                else if (this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount >= 60)
+                {
+                    if (nextPhase != currentPhase)
+                    {
+                        majorPhaseChange(0);
+                        yield return new WaitForSeconds(3);
+
+                    }
+
+                    nextPhase = 4;
+                    majorPhaseChange(nextPhase);
+                    currentPhase = nextPhase;
+                    yield return new WaitForSeconds(5);
+
+                }
 
                 //main roads congested
-                if (street1Count > 3 || street2Count > 3)
+                else if (street1Count > 3 || street2Count > 3)
                 {
                     if (nextPhase != currentPhase)
                     {
@@ -201,15 +234,53 @@ public class TrafficLightColour : MonoBehaviour
                 //main roads are not congested
                 else
                 {
+                    //if the cars on 3 have been waiting for at least a minute then give them green
+                    if (this.gameObject.GetComponent<TrafficLightStats>().street3TimeCount >= 60)
+                    {
+                        if (nextPhase != currentPhase)
+                        {
+                            majorPhaseChange(0);
+                            yield return new WaitForSeconds(3);
+
+                        }
+
+                        nextPhase = 3;
+                        majorPhaseChange(nextPhase);
+                        currentPhase = nextPhase;
+                        yield return new WaitForSeconds(5);
+
+                    }
+
+                    //if the cars on 4 have been waiting for at least a minute then give them green
+                    else if (this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount >= 60)
+                    {
+                        if (nextPhase != currentPhase)
+                        {
+                            majorPhaseChange(0);
+                            yield return new WaitForSeconds(3);
+
+                        }
+
+                        nextPhase = 4;
+                        majorPhaseChange(nextPhase);
+                        currentPhase = nextPhase;
+                        yield return new WaitForSeconds(5);
+
+                    }
+
                     //side roads congested
-                    if (street3Count > 3 || street4Count > 3)
+                    else if (street3Count > 3 || street4Count > 3)
                     {
                         //both side roads are congested
                         if (street3Count > 3 && street4Count > 3)
                         {
 
-                            majorPhaseChange(0);
-                            yield return new WaitForSeconds(3);
+                            if (nextPhase != currentPhase)
+                            {
+                                majorPhaseChange(0);
+                                yield return new WaitForSeconds(3);
+
+                            }
 
 
                             nextPhase = 4;
@@ -234,8 +305,12 @@ public class TrafficLightColour : MonoBehaviour
                         else if (street3Count > street4Count)
                         {
 
-                            majorPhaseChange(0);
-                            yield return new WaitForSeconds(3);
+                            if (nextPhase != currentPhase)
+                            {
+                                majorPhaseChange(0);
+                                yield return new WaitForSeconds(3);
+
+                            }
 
 
                             nextPhase = 3;
@@ -248,8 +323,12 @@ public class TrafficLightColour : MonoBehaviour
                         else
                         {
 
-                            majorPhaseChange(0);
-                            yield return new WaitForSeconds(3);
+                            if (nextPhase != currentPhase)
+                            {
+                                majorPhaseChange(0);
+                                yield return new WaitForSeconds(3);
+
+                            }
 
 
                             nextPhase = 4;
@@ -307,8 +386,25 @@ public class TrafficLightColour : MonoBehaviour
 
             if (this.transform.gameObject.name.Contains("Minor"))
             {
+
+                //if the cars on 4 have been waiting for at least a minute then give them green
+                if (this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount >= 60)
+                {
+                    if (nextPhase != currentPhase)
+                    {
+                        minorPhaseChange(0);
+                        yield return new WaitForSeconds(3);
+
+                    }
+
+                    nextPhase = 4;
+                    minorPhaseChange(nextPhase);
+                    currentPhase = nextPhase;
+                    yield return new WaitForSeconds(5);
+
+                }
                 //main roads congested
-                if (street1Count > 3 || street2Count > 3)
+                else if (street1Count > 3 || street2Count > 3)
                 {
                     if (nextPhase != currentPhase)
                     {
@@ -334,12 +430,34 @@ public class TrafficLightColour : MonoBehaviour
                 //main roads are not congested
                 else
                 {
+
+                    //if the cars on 4 have been waiting for at least a minute then give them green
+                     if (this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount >= 60)
+                    {
+                        if (nextPhase != currentPhase)
+                        {
+                            minorPhaseChange(0);
+                            yield return new WaitForSeconds(3);
+
+                        }
+
+                        nextPhase = 4;
+                        minorPhaseChange(nextPhase);
+                        currentPhase = nextPhase;
+                        yield return new WaitForSeconds(5);
+
+                    }
+
                     //side roads congested
-                    if (street4Count > 3)
+                    else if (street4Count > 3)
                     {
 
-                        minorPhaseChange(0);
-                        yield return new WaitForSeconds(3);
+                        if (nextPhase != currentPhase)
+                        {
+                            minorPhaseChange(0);
+                            yield return new WaitForSeconds(3);
+
+                        }
 
 
                         nextPhase = 4;

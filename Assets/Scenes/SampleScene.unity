@@ -4119,6 +4119,10 @@ MonoBehaviour:
   intersectionSumCount: 0
   incomingTrafficCount1: 0
   incomingTrafficCount2: 0
+  street1TimeCount: 0
+  street2TimeCount: 0
+  street3TimeCount: 0
+  street4TimeCount: 0
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
@@ -7794,8 +7798,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981255955}
   m_LocalRotation: {x: -0, y: 0.45031622, z: -0, w: 0.8928692}
-  m_LocalPosition: {x: 52.31, y: -1.1834064, z: 90.74}
-  m_LocalScale: {x: 9.199999, y: 1, z: 1}
+  m_LocalPosition: {x: 53.18, y: -1.1834064, z: 89.61}
+  m_LocalScale: {x: 11.743798, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935238670}
   m_RootOrder: 1
@@ -8638,6 +8642,10 @@ MonoBehaviour:
   intersectionSumCount: 0
   incomingTrafficCount1: 0
   incomingTrafficCount2: 0
+  street1TimeCount: 0
+  street2TimeCount: 0
+  street3TimeCount: 0
+  street4TimeCount: 0
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
@@ -14314,6 +14322,10 @@ MonoBehaviour:
   intersectionSumCount: 0
   incomingTrafficCount1: 0
   incomingTrafficCount2: 0
+  street1TimeCount: 0
+  street2TimeCount: 0
+  street3TimeCount: 0
+  street4TimeCount: 0
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
@@ -15112,6 +15124,10 @@ MonoBehaviour:
   intersectionSumCount: 0
   incomingTrafficCount1: 0
   incomingTrafficCount2: 0
+  street1TimeCount: 0
+  street2TimeCount: 0
+  street3TimeCount: 0
+  street4TimeCount: 0
   currentPhase: 0
   neighbourPhase1: 0
   neighbourPhase2: 0
