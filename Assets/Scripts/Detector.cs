@@ -17,11 +17,10 @@ public class Detector : MonoBehaviour
         count = 0;
         Collider[] hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2, transform.rotation);
 
+        //count each car within the detector
         foreach (Collider col in hitColliders)
         {
-            //print("there is " + count + " cars");
             count++;
-            //print(col.gameObject.name);
 
         }
 

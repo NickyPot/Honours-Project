@@ -11,20 +11,20 @@ public class WaypointController : MonoBehaviour
     //route list
     public List<GameObject> routes = new List<GameObject>();
 
-    // public Transform startingPoint;
+   // public Transform startingPoint;
     public List<GameObject> possibleEndingPoints;
     public Transform endPoint;
-    private Transform startPoint;
+    public Transform startPoint;
 
 
 
     //init vars for moving through waypoints
-    public GameObject currentRoute;
+    public  GameObject currentRoute;
     public Transform targetWaypoint;
     private float minDistance = 0.1f;
 
     //init vars for vehicle speed
-    private float movementSpeed;
+    public float movementSpeed;
     private float acceleration;
 
     //this will log all the speeds that the vehicle has taken
@@ -42,6 +42,10 @@ public class WaypointController : MonoBehaviour
     bool recordedState;
 
 
+    public bool inDebug;
+    public bool finished = false;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,10 +59,10 @@ public class WaypointController : MonoBehaviour
          * this will always reset vars used by the script to be used next time it
          * the vehicle object gets activated out of the pool 
          */
-        movementSpeed = 0f;
-        acceleration = 0.0001f;
+        //movementSpeed = 0f;
+        acceleration = 0.001f;
         targetWaypoint = null;
-        endPoint = null;
+        //endPoint = null;
         loggedSpeeds = null;
         loggedSpeeds = new List<float>();
         avgSpeed = 0;
@@ -70,19 +74,32 @@ public class WaypointController : MonoBehaviour
         //restart stopwatch
         stopwatch.Start();
 
-        //find what route the car is on, its first waypoint and where it should finish
-        currentRoute = FindRoute();
-        targetWaypoint = FindFirstWaypoint(currentRoute);
-        //save first point for stat tracking
-        startPoint = targetWaypoint;
-        endPoint = PickEndingPoint(possibleEndingPoints);
+        if (inDebug)
+        {
+            currentRoute = startPoint.parent.gameObject;
+            targetWaypoint = FindFirstWaypoint(currentRoute);
 
+        }
+        else 
+        {
+            //find what route the car is on, its first waypoint and where it should finish
+            currentRoute = FindRoute();
+            targetWaypoint = FindFirstWaypoint(currentRoute);
+            //save first point for stat tracking
+            startPoint = targetWaypoint;
+            endPoint = PickEndingPoint(possibleEndingPoints);
+
+
+        }
+
+        
+       
 
     }
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //get what speed the vehicle should be moveing at
         movementSpeed = getSpeed(movementSpeed, acceleration);
@@ -202,13 +219,13 @@ public class WaypointController : MonoBehaviour
 
 
     //get the first waypoint of the given route, used to start the car
-    Transform FindFirstWaypoint(GameObject route)
+    public Transform FindFirstWaypoint(GameObject route)
     {
 
 
         return route.transform.GetChild(0).transform;
-
-
+        
+    
     }
 
 
@@ -263,7 +280,7 @@ public class WaypointController : MonoBehaviour
         else
         {
             this.gameObject.SetActive(false);
-
+        
         }
 
         return _endpoint;
@@ -288,7 +305,7 @@ public class WaypointController : MonoBehaviour
                 //ie you have only finished the part of the route and not the overall route
                 if (possibleEndingPoints.Contains(currentRoute.transform.GetChild(index).gameObject))
                 {
-                    print(currentRoute.transform.GetChild(index).gameObject.name);
+                    //print(currentRoute.transform.GetChild(index).gameObject.name);
                     //stops the timer and logs the time the car was on the road
                     //TODO: logs on console, switch to csv file
                     stopwatch.Stop();
@@ -302,7 +319,16 @@ public class WaypointController : MonoBehaviour
 
 
                     //deactivate vehicle to be returned to object pool
-                    this.gameObject.SetActive(false);
+                    if (!inDebug)
+                    {
+                        this.gameObject.SetActive(false);
+
+                    }
+                    else
+                    {
+                        finished = true;
+                    
+                    }
 
                 }
 
@@ -311,7 +337,7 @@ public class WaypointController : MonoBehaviour
                     //find next route
                     currentRoute = FindConsequentRoute(endPoint, currentRoute);
                     targetWaypoint = FindFirstWaypoint(currentRoute);
-
+                
                 }
 
 
@@ -332,14 +358,15 @@ public class WaypointController : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 2, Color.green);
+        UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down)*2, Color.green);
 
     }
 
+    //get what speed the car should be moving at
     float getSpeed(float _movementSpeed, float _acceleration)
     {
         RaycastHit hit;
-
+        
         bool _carInFront = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2);
 
         if (_movementSpeed <= 0.13f)
@@ -348,8 +375,8 @@ public class WaypointController : MonoBehaviour
             _movementSpeed += _acceleration;
             //log the speed to the speeds list
             loggedSpeeds.Add(_movementSpeed);
-
-
+            
+        
         }
 
         if (_carInFront && hit.distance <= 2)
@@ -359,33 +386,35 @@ public class WaypointController : MonoBehaviour
             if (hit.transform.gameObject.GetComponent<WaypointController>().stoppedAtLight)
             {
                 EnableStoppedState();
-
+                
 
             }
-            else
+            else 
             {
                 DisableStoppedState();
             }
-
+        
         }
 
         return _movementSpeed;
     }
-
+    
+    //calculate avg speed to save
     void calcAvgSpeed()
     {
         avgSpeed = loggedSpeeds.Sum() / loggedSpeeds.Count();
+        
 
-
-
+    
     }
 
+    //save data to file
     void writeData(string _startPointName, string _routeName, string _avgSpeed, string _timeOnRoad, string _stops)
     {
         TextWriter txtWriter = new StreamWriter("carstats.csv", true);
         txtWriter.WriteLine(_startPointName + ", " + _routeName + ", " + _avgSpeed + ", " + _timeOnRoad + ", " + _stops);
         txtWriter.Close();
-
+    
     }
 
     //this will stop the car if it comes across an activated control zone by a traffic light
@@ -400,7 +429,7 @@ public class WaypointController : MonoBehaviour
             EnableStoppedState();
 
         }
-
+        
     }
 
     //start acceleration again at green light
@@ -408,13 +437,13 @@ public class WaypointController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         acceleration = 0.0001f;
-        DisableStoppedState();
+        DisableStoppedState();        
     }
 
     //this is called when the car is stopped at a traffic light
     private void EnableStoppedState()
     {
-
+        
         stoppedAtLight = true;
 
         if (!recordedState)
@@ -425,8 +454,8 @@ public class WaypointController : MonoBehaviour
         //this is used to indicate that the stopped counter has already been increased
         //prevents recording multiple times for a single stop
         recordedState = true;
-
-
+    
+    
     }
 
     //called when the car is no longer stopped at a light

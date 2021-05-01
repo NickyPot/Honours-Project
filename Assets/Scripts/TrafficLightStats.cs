@@ -180,7 +180,6 @@ public class TrafficLightStats : MonoBehaviour
             }
 
             //debugging
-            //print("Road 1: " + maxStreet1Count + "Road 2: " + maxStreet2Count + "Road 3: " + maxStreet3Count + "Road 4: " + maxStreet4Count);
 
 
             //increase the street time count if there is at least one car there
