@@ -362,6 +362,7 @@ public class WaypointController : MonoBehaviour
 
     }
 
+    //get what speed the car should be moving at
     float getSpeed(float _movementSpeed, float _acceleration)
     {
         RaycastHit hit;
@@ -397,7 +398,8 @@ public class WaypointController : MonoBehaviour
 
         return _movementSpeed;
     }
-
+    
+    //calculate avg speed to save
     void calcAvgSpeed()
     {
         avgSpeed = loggedSpeeds.Sum() / loggedSpeeds.Count();
@@ -406,6 +408,7 @@ public class WaypointController : MonoBehaviour
     
     }
 
+    //save data to file
     void writeData(string _startPointName, string _routeName, string _avgSpeed, string _timeOnRoad, string _stops)
     {
         TextWriter txtWriter = new StreamWriter("carstats.csv", true);

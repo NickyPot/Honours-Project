@@ -174,6 +174,8 @@ public class spawner : MonoBehaviour
     
     }
 
+    //find which waypoint is the closest to the spawner
+    //helps with finding spawn rate
     void FindClosestWaypoint()
     {
         Vector3 currentPosition = transform.position;
@@ -210,7 +212,6 @@ public class spawner : MonoBehaviour
 
 
             }
-            //print(closestWaypoint.transform.parent.transform.parent.name + ", " + endingPoint.transform.parent.transform.parent.name);
 
         }
 
