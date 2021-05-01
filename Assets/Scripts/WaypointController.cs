@@ -436,7 +436,7 @@ public class WaypointController : MonoBehaviour
     //called when the control zone is moved up
     private void OnTriggerExit(Collider other)
     {
-        acceleration = 0.0001f;
+        acceleration = 0.001f;
         DisableStoppedState();        
     }
 

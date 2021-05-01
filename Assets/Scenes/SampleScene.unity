@@ -374,7 +374,7 @@ PrefabInstance:
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
@@ -1638,7 +1638,7 @@ PrefabInstance:
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
@@ -2218,7 +2218,7 @@ PrefabInstance:
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
@@ -2694,7 +2694,7 @@ PrefabInstance:
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
@@ -4084,7 +4084,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514146224}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
@@ -4755,7 +4755,7 @@ PrefabInstance:
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
@@ -6961,7 +6961,7 @@ PrefabInstance:
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
@@ -8603,7 +8603,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126122794}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
@@ -13872,7 +13872,7 @@ PrefabInstance:
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
@@ -14279,7 +14279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742888622}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
@@ -15077,7 +15077,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939624356}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cce567adb5fde04b8db56c2e6513517, type: 3}
   m_Name: 
@@ -15992,7 +15992,7 @@ PrefabInstance:
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004291603844284701, guid: 4f755df29b7f3c94ead457a8e60e5147,
         type: 3}
@@ -17898,7 +17898,7 @@ PrefabInstance:
     - target: {fileID: 2337691723091996666, guid: c4af752b7f2b97a4499a879f20363095,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2337691723091996667, guid: c4af752b7f2b97a4499a879f20363095,
         type: 3}

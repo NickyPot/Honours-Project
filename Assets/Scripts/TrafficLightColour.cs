@@ -180,8 +180,13 @@ public class TrafficLightColour : MonoBehaviour
                 //main roads congested
                 if (street1Count > 3 || street2Count > 3)
                 {
-                    majorPhaseChange(0);
-                    yield return new WaitForSeconds(3);
+                    if (nextPhase != currentPhase)
+                    {
+                        majorPhaseChange(0);
+                        yield return new WaitForSeconds(3);
+
+                    }
+                   
 
                     nextPhase = 12;
                     majorPhaseChange(nextPhase);
