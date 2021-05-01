@@ -178,7 +178,7 @@ public class TrafficLightColour : MonoBehaviour
             {
 
                 //main roads congested
-                if (street1Count > 4 || street2Count > 4)
+                if (street1Count > 3 || street2Count > 3)
                 {
                     majorPhaseChange(0);
                     yield return new WaitForSeconds(3);
@@ -303,7 +303,7 @@ public class TrafficLightColour : MonoBehaviour
             if (this.transform.gameObject.name.Contains("Minor"))
             {
                 //main roads congested
-                if (street1Count > 4 || street2Count > 4)
+                if (street1Count > 3 || street2Count > 3)
                 {
                     if (nextPhase != currentPhase)
                     {
