@@ -14,7 +14,7 @@ public class WaypointController : MonoBehaviour
    // public Transform startingPoint;
     public List<GameObject> possibleEndingPoints;
     public Transform endPoint;
-    private Transform startPoint;
+    public Transform startPoint;
 
 
 
@@ -24,7 +24,7 @@ public class WaypointController : MonoBehaviour
     private float minDistance = 0.1f;
 
     //init vars for vehicle speed
-    private float movementSpeed;
+    public float movementSpeed;
     private float acceleration;
 
     //this will log all the speeds that the vehicle has taken
@@ -40,6 +40,10 @@ public class WaypointController : MonoBehaviour
     public int timesStopedAtLight;
     public bool stoppedAtLight;
     bool recordedState;
+
+    //used for debugging using waypointcontroller test script
+    public bool inDebug;
+    public bool finished = false;
     
 
     // Start is called before the first frame update
@@ -55,10 +59,10 @@ public class WaypointController : MonoBehaviour
          * this will always reset vars used by the script to be used next time it
          * the vehicle object gets activated out of the pool 
          */
-        movementSpeed = 0f;
-        acceleration = 0.0001f;
+        //movementSpeed = 0f;
+        acceleration = 0.001f;
         targetWaypoint = null;
-        endPoint = null;
+        //endPoint = null;
         loggedSpeeds = null;
         loggedSpeeds = new List<float>();
         avgSpeed = 0;
@@ -70,19 +74,32 @@ public class WaypointController : MonoBehaviour
         //restart stopwatch
         stopwatch.Start();
 
-        //find what route the car is on, its first waypoint and where it should finish
-        currentRoute = FindRoute();
-        targetWaypoint = FindFirstWaypoint(currentRoute);
-        //save first point for stat tracking
-        startPoint = targetWaypoint;
-        endPoint = PickEndingPoint(possibleEndingPoints);
+        if (inDebug)
+        {
+            currentRoute = startPoint.parent.gameObject;
+            targetWaypoint = FindFirstWaypoint(currentRoute);
+
+        }
+        else 
+        {
+            //find what route the car is on, its first waypoint and where it should finish
+            currentRoute = FindRoute();
+            targetWaypoint = FindFirstWaypoint(currentRoute);
+            //save first point for stat tracking
+            startPoint = targetWaypoint;
+            endPoint = PickEndingPoint(possibleEndingPoints);
+
+
+        }
+
+        
        
 
     }
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //get what speed the vehicle should be moveing at
         movementSpeed = getSpeed(movementSpeed, acceleration);
@@ -202,7 +219,7 @@ public class WaypointController : MonoBehaviour
 
 
     //get the first waypoint of the given route, used to start the car
-    Transform FindFirstWaypoint(GameObject route)
+    public Transform FindFirstWaypoint(GameObject route)
     {
 
 
@@ -288,7 +305,7 @@ public class WaypointController : MonoBehaviour
                 //ie you have only finished the part of the route and not the overall route
                 if (possibleEndingPoints.Contains(currentRoute.transform.GetChild(index).gameObject))
                 {
-                    print(currentRoute.transform.GetChild(index).gameObject.name);
+                    //print(currentRoute.transform.GetChild(index).gameObject.name);
                     //stops the timer and logs the time the car was on the road
                     //TODO: logs on console, switch to csv file
                     stopwatch.Stop();
@@ -298,11 +315,22 @@ public class WaypointController : MonoBehaviour
                     //calculate avg speed of vehicle
                     calcAvgSpeed();
 
+                    //save it to file
                     writeData(startPoint.transform.parent.name, currentRoute.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString(), timesStopedAtLight.ToString());
 
 
-                    //deactivate vehicle to be returned to object pool
-                    this.gameObject.SetActive(false);
+                    //deactivate vehicle to be returned to object pool if not in debug
+                    if (!inDebug)
+                    {
+                        this.gameObject.SetActive(false);
+
+                    }
+                    //if inDebug then set finished and let test script take care of it
+                    else
+                    {
+                        finished = true;
+                    
+                    }
 
                 }
 
@@ -336,6 +364,7 @@ public class WaypointController : MonoBehaviour
 
     }
 
+    //get what speed the car should be moving at
     float getSpeed(float _movementSpeed, float _acceleration)
     {
         RaycastHit hit;
@@ -371,7 +400,8 @@ public class WaypointController : MonoBehaviour
 
         return _movementSpeed;
     }
-
+    
+    //calculate avg speed to save
     void calcAvgSpeed()
     {
         avgSpeed = loggedSpeeds.Sum() / loggedSpeeds.Count();
@@ -380,6 +410,7 @@ public class WaypointController : MonoBehaviour
     
     }
 
+    //save data to file
     void writeData(string _startPointName, string _routeName, string _avgSpeed, string _timeOnRoad, string _stops)
     {
         TextWriter txtWriter = new StreamWriter("carstats.csv", true);

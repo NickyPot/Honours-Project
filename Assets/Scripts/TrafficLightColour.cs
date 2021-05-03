@@ -5,20 +5,25 @@ using UnityEngine;
 
 public class TrafficLightColour : MonoBehaviour
 {
-
+    //store the material for red/green
+    //used to set the lights colour
     public Material RedLight;
     public Material GreenLight;
 
+    //store traffic lights transforms
+    //used to set the lights
     Transform trafficLight1;
     Transform trafficLight2;
     Transform trafficLight3;
     Transform trafficLight4;
 
+    //keeps track of the current phase
     public int currentPhase;
 
     // Start is called before the first frame update
     void Start()
     {
+        //find the lights
         trafficLight1 = this.transform.Find("TrafficLight1").Find("Light");
         trafficLight2 = this.transform.Find("TrafficLight2").Find("Light");
 
@@ -35,7 +40,7 @@ public class TrafficLightColour : MonoBehaviour
 
     }
 
-
+    //switches the phases every specified intervals
     IEnumerator changeLight()
     {
 
