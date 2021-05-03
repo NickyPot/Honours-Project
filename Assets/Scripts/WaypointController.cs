@@ -342,7 +342,7 @@ public class WaypointController : MonoBehaviour
         
         bool _carInFront = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2);
 
-        if (_movementSpeed <= 0.4f)
+        if (_movementSpeed <= 0.13f)
         {
             //increase the vehicle speed if it has not reached top speed
             _movementSpeed += _acceleration;
