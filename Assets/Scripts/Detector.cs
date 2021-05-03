@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Detector : MonoBehaviour
 {
+    //holds the amount of cars within the detector
     public int count;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,7 @@ public class Detector : MonoBehaviour
     void Update()
     {
         count = 0;
+        //get all the colliders within the detector
         Collider[] hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2, transform.rotation);
 
         //count each car within the detector

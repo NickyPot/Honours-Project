@@ -27,10 +27,6 @@ public class TrafficLightTest : MonoBehaviour
     {
         
 
-
-
-       
-
     }
 
     IEnumerator checkControlZoneChange()
