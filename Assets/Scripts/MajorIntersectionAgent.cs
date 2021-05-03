@@ -49,11 +49,11 @@ public class MajorIntersectionAgent : Agent
     // Start is called before the first frame update
     void Start()
     {
+        //disable automatic stepping so that you can control how much data the algo takes with the decision 
+        //requester
         Academy.Instance.AutomaticSteppingEnabled = false;
 
-
-
-
+        //stat recorder helps put data in tensorboard
         statRec = Academy.Instance.StatsRecorder;
 
         StartCoroutine(decidePhase());
@@ -311,8 +311,7 @@ public class MajorIntersectionAgent : Agent
                 }
 
 
-                //reward = (float)(1 / (1 + street1Count * 1.5 + street2Count * 1.5 + street3Count * tpStreet3 + street4Count * tpStreet4));
-                //reward = (float)(Math.Truncate((double)reward * 1000.0) / 1000.0);
+
 
 
             }

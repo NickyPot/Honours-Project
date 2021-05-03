@@ -49,10 +49,12 @@ public class MinorIntersectionAgent : Agent
     // Start is called before the first frame update
     void Start()
     {
+        //disable automatic stepping so that you can control how much data the algo takes with the decision 
+        //requester
         Academy.Instance.AutomaticSteppingEnabled = false;
 
 
-
+        //stat recorder helps put data in tensorboard
         statRec = Academy.Instance.StatsRecorder;
 
         StartCoroutine(decidePhase());
@@ -120,7 +122,7 @@ public class MinorIntersectionAgent : Agent
             stree4TimeCount = 60;
         }
 
-        //this ads the stats to tensorboard
+        //this adds the stats to tensorboard
         statRec.Add("street 1 count", street1Count);
         statRec.Add("street 2 count", street2Count);
         statRec.Add("street 4 count", street4Count);
@@ -138,7 +140,6 @@ public class MinorIntersectionAgent : Agent
                 //main road green light
                 trafficLight1.GetComponent<MeshRenderer>().material = GreenLight;
                 trafficLight2.GetComponent<MeshRenderer>().material = GreenLight;
-               // trafficLight3.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight4.GetComponent<MeshRenderer>().material = RedLight;
                 this.gameObject.GetComponent<TrafficLightStats>().street1TimeCount = 0;
                 this.gameObject.GetComponent<TrafficLightStats>().street2TimeCount = 0;
@@ -149,7 +150,6 @@ public class MinorIntersectionAgent : Agent
                 //side road 4 green light
                 trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
-                //trafficLight3.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight4.GetComponent<MeshRenderer>().material = GreenLight;
                 this.gameObject.GetComponent<TrafficLightStats>().street4TimeCount = 0;
                 break;
@@ -158,7 +158,6 @@ public class MinorIntersectionAgent : Agent
                 //phase change delay, is used to give cars halfway across the intersection time to finish crossing
                 trafficLight1.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight2.GetComponent<MeshRenderer>().material = RedLight;
-                //trafficLight3.GetComponent<MeshRenderer>().material = RedLight;
                 trafficLight4.GetComponent<MeshRenderer>().material = RedLight;
                 break;
 
@@ -190,7 +189,6 @@ public class MinorIntersectionAgent : Agent
 
 
             //find time penalty
-            //float tpStreet3 = findTimePenalty(stree3TimeCount);
             float tpStreet4 = findTimePenalty(stree4TimeCount);
 
 
@@ -244,8 +242,7 @@ public class MinorIntersectionAgent : Agent
                 }
 
 
-                //reward = (float)(1 / (1 + street1Count * 1.5 + street2Count * 1.5 + street3Count * tpStreet3 + street4Count * tpStreet4));
-                //reward = (float)(Math.Truncate((double)reward * 1000.0) / 1000.0);
+
 
 
             }
@@ -272,22 +269,19 @@ public class MinorIntersectionAgent : Agent
     {
         sensor.AddObservation(normalize(street1Count, 0, 5));
         sensor.AddObservation(normalize(street2Count, 0, 5));
-        //sensor.AddObservation(normalize(street3Count, 0, 5));
         sensor.AddObservation(normalize(street4Count, 0, 5));
         sensor.AddObservation(normalize(incommingCount1, 0, 15));
         sensor.AddObservation(normalize(incommingCount2, 0, 15));
-        //i think i am removing the phase tracking because it doesn't really matter what
-        //phase the the neighbour is in
-        //sensor.AddObservation(neighbourPhase);
-        //sensor.AddObservation(normalize(stree3TimeCount, 0, 60));
+
+
         sensor.AddObservation(normalize(stree4TimeCount, 0, 60));
 
     }
 
+    //set next phase to what the algo has predicted
     public override void OnActionReceived(ActionBuffers actions)
     {
         nextPhase = actions.DiscreteActions[0];
-        //print(nextPhase);
 
 
     }
