@@ -60,7 +60,7 @@ public class MinorIntersectionAgent : Agent
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //dont go over max value set for normalisation
         if (this.gameObject.GetComponent<TrafficLightStats>().street1Count <= 5)

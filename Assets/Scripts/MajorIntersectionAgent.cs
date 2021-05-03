@@ -62,7 +62,7 @@ public class MajorIntersectionAgent : Agent
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //dont go over max value set for normalisation
         if (this.gameObject.GetComponent<TrafficLightStats>().street1Count <= 5)
@@ -364,6 +364,7 @@ public class MajorIntersectionAgent : Agent
         float _normalisedValue;
 
         _normalisedValue = (float)(_currentValue - _minValue) / (_maxValue - _minValue);
+        print(_normalisedValue);
 
         return _normalisedValue;
     }

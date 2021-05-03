@@ -79,7 +79,7 @@ public class TrafficLightStats : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //get the street counts of the present intersection
         street1Count = detector1.GetComponent<Detector>().count;
