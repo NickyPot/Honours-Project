@@ -41,7 +41,7 @@ public class WaypointController : MonoBehaviour
     public bool stoppedAtLight;
     bool recordedState;
 
-
+    //used for debugging using waypointcontroller test script
     public bool inDebug;
     public bool finished = false;
     
@@ -315,15 +315,17 @@ public class WaypointController : MonoBehaviour
                     //calculate avg speed of vehicle
                     calcAvgSpeed();
 
+                    //save it to file
                     writeData(startPoint.transform.parent.name, currentRoute.gameObject.name, avgSpeed.ToString(), timeOnRoad.ToString(), timesStopedAtLight.ToString());
 
 
-                    //deactivate vehicle to be returned to object pool
+                    //deactivate vehicle to be returned to object pool if not in debug
                     if (!inDebug)
                     {
                         this.gameObject.SetActive(false);
 
                     }
+                    //if inDebug then set finished and let test script take care of it
                     else
                     {
                         finished = true;
